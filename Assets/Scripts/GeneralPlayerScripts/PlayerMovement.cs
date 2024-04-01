@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputMovement;
     public bool dashed = false;
     public bool attacked = false;
+    public Animator anim;
 
 
     // Start is called before the first frame update
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if ((canDash == true) & (dashed == true))
         {
             StartCoroutine(Dash());
+            anim.SetTrigger("Dashing");
         }
         if (hp <= 0)
         {
