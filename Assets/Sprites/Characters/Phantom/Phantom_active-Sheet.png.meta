@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28048f78bf2816146ac798628c457721
+guid: 0f92ac14b58e5824bbd61cb4fd3bb8c5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,12 +136,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Phantom_air-Sheet_0
+      name: Phantom_active-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -150,19 +150,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8db4233da05ec44487479d287132965
-      internalID: -1108008056
+      spriteID: 5f983cbf63c298e47a73d0caa8d4dc27
+      internalID: 1556350342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phantom_air-Sheet_1
+      name: Phantom_active-Sheet_1
       rect:
         serializedVersion: 2
-        x: 210
+        x: 240
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -171,19 +171,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02d61b4a58276f04788aa704e67689d3
-      internalID: 439090880
+      spriteID: a9b2998669ac4c042b04ed8da7c2425d
+      internalID: 220011380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phantom_air-Sheet_2
+      name: Phantom_active-Sheet_2
       rect:
         serializedVersion: 2
-        x: 420
+        x: 480
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -192,19 +192,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ed34c73fbfdb1c498f96f76cacc0cd3
-      internalID: -537101762
+      spriteID: 740deff70d2705c41bb356f83fa34e2d
+      internalID: 1798370965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phantom_air-Sheet_3
+      name: Phantom_active-Sheet_3
       rect:
         serializedVersion: 2
-        x: 630
+        x: 720
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26e21b49f2d7baa4d8ad2cddd537d8cf
-      internalID: -1556289935
+      spriteID: ffcd942c628ea4c4a92d107b98f96342
+      internalID: 1824864198
       vertices: []
       indices: 
       edges: []
@@ -222,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1fbe04e5586e571489e808123e82955e
+    spriteID: 73d76582343e8134dac52873735df159
     internalID: 0
     vertices: []
     indices: 
@@ -230,10 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Phantom_air-Sheet_0: -1108008056
-      Phantom_air-Sheet_1: 439090880
-      Phantom_air-Sheet_2: -537101762
-      Phantom_air-Sheet_3: -1556289935
+      Phantom_active-Sheet_0: 1556350342
+      Phantom_active-Sheet_1: 220011380
+      Phantom_active-Sheet_2: 1798370965
+      Phantom_active-Sheet_3: 1824864198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
