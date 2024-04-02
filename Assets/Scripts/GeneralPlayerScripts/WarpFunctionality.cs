@@ -40,10 +40,5 @@ public class WarpFunctionality : MonoBehaviour
         {
             this.gameObject.transform.position = new Vector3(transform.position.x, topOfScreenInWorld, 0f);
         }
-        InstantiateCoin(leftSideOfScreenInWorld,rightSideOfScreenInWorld,bottomOfScreenInWorld,topOfScreenInWorld);
-    }
-    public void InstantiateCoin(float leftX, float rightX, float bottomY, float topY)
-    {
-        Debug.Log(Random.Range(leftX, rightX));
     }
 }

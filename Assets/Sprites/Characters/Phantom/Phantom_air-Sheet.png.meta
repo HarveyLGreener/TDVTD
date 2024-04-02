@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 30b98a974c7a4704eb6acb92d6895061
+guid: 28048f78bf2816146ac798628c457721
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,13 +37,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
+    wrapU: 0
+    wrapV: 0
     wrapW: 0
-  nPOTScale: 0
+  nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 0
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 0
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -134,84 +134,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Rattles_dash-Sheet_0
-      rect:
-        serializedVersion: 2
-        x: 18
-        y: 0
-        width: 150
-        height: 216
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a648b33289eba443a74888482735b82
-      internalID: 1549647895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rattles_dash-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 0
-        width: 132
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d7d6eeca792efc49933e9e08680b769
-      internalID: -1438766180
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rattles_dash-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 0
-        width: 126
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3564b76235ce7b348aff409e5d5d5be4
-      internalID: 2015356121
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Rattles_dash-Sheet_0: 1549647895
-      Rattles_dash-Sheet_1: -1438766180
-      Rattles_dash-Sheet_2: 2015356121
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

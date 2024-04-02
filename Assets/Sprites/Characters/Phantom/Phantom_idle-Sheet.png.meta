@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30b98a974c7a4704eb6acb92d6895061
+guid: 9c0b33945a304d445aca24a8d02e0037
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,64 +136,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_0
+      name: Phantom_idle-Sheet_0
       rect:
         serializedVersion: 2
-        x: 18
+        x: 0
         y: 0
-        width: 150
-        height: 216
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a648b33289eba443a74888482735b82
-      internalID: 1549647895
+      spriteID: 8948282bb59a03c498f6d620272be984
+      internalID: -1746425020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_1
+      name: Phantom_idle-Sheet_1
       rect:
         serializedVersion: 2
-        x: 234
+        x: 210
         y: 0
-        width: 132
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d7d6eeca792efc49933e9e08680b769
-      internalID: -1438766180
+      spriteID: 87e80b1906749814882677484e67574a
+      internalID: 1354525876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_2
+      name: Phantom_idle-Sheet_2
       rect:
         serializedVersion: 2
-        x: 450
+        x: 420
         y: 0
-        width: 126
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3564b76235ce7b348aff409e5d5d5be4
-      internalID: 2015356121
+      spriteID: c4e8cf3508a99b34887907b71d6f470e
+      internalID: -658221819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Phantom_idle-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390a17efdd0bffd4aa7fc9eccb0dfaea
+      internalID: -469211820
       vertices: []
       indices: 
       edges: []
@@ -201,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 1961db6ce7d7e6a4b837420e1f046554
     internalID: 0
     vertices: []
     indices: 
@@ -209,9 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Rattles_dash-Sheet_0: 1549647895
-      Rattles_dash-Sheet_1: -1438766180
-      Rattles_dash-Sheet_2: 2015356121
+      Phantom_idle-Sheet_0: -1746425020
+      Phantom_idle-Sheet_1: 1354525876
+      Phantom_idle-Sheet_2: -658221819
+      Phantom_idle-Sheet_3: -469211820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

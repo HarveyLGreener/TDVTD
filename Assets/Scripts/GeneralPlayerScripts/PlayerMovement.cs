@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public bool dashed = false;
     public bool attacked = false;
     public Animator anim;
+    public int currentAnim = 0;
 
 
     // Start is called before the first frame update
@@ -49,11 +50,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentAnim != anim.GetCurrentAnimatorStateInfo(0).shortNameHash)
+        {
+            changeCollider();
+        }
+        currentAnim = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
         //Debug.Log(screenPos.x);
         //controls horizontal movement, moves at a constant speed
         float inputX = inputMovement.x;
-        transform.position += transform.right * inputX * MoveSpeed * Time.deltaTime;
-
         if (inputX < 0 && !playerAttack.active)
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
@@ -62,6 +66,16 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
+        if (inputX != 0)
+        {
+            anim.SetBool("Running", true);
+        }
+        else
+        {
+           anim.SetBool("Running", false);
+
+        }
+        transform.position += transform.right * inputX * MoveSpeed * Time.deltaTime;
 
 
         //controls jumping, uses an impulse force to give the feeling of a jump
@@ -69,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y == 0 && dashOnCooldown == false && canJump == true)
         {
             canDash = true;
+            anim.SetBool("Falling", false);
         }
         if (rb.velocity.y == 0 && inputY > 0 && canJump == true)
         {
@@ -78,10 +93,15 @@ public class PlayerMovement : MonoBehaviour
         {
            rb.velocity = new Vector2(rb.velocity.x, -20f);
         }
+        if (rb.velocity.y < -0.05f || rb.velocity.y > 0.05f)
+        {
+            anim.SetBool("Falling", true);
+        }
         if ((canDash == true) & (dashed == true))
         {
             StartCoroutine(Dash());
             anim.SetTrigger("Dashing");
+            changeCollider();
         }
         if (hp <= 0)
         {
@@ -146,5 +166,11 @@ public class PlayerMovement : MonoBehaviour
         canDash = false;
         yield return new WaitForSeconds(0.75f);
         dashOnCooldown = false;
+    }
+
+    public void changeCollider()
+    {
+        Destroy(gameObject.GetComponent<PolygonCollider2D>());
+        gameObject.AddComponent<PolygonCollider2D>();
     }
 }

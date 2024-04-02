@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30b98a974c7a4704eb6acb92d6895061
+guid: b38a493ca682a3a4ca7a672651a679d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,64 +136,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_0
+      name: Rattles_air-Sheet_0
       rect:
         serializedVersion: 2
-        x: 18
+        x: 0
         y: 0
-        width: 150
-        height: 216
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 180
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a648b33289eba443a74888482735b82
-      internalID: 1549647895
+      spriteID: 2e060295e17f98244a68e7767965b826
+      internalID: 408336487
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_1
+      name: Rattles_air-Sheet_1
       rect:
         serializedVersion: 2
-        x: 234
+        x: 180
         y: 0
-        width: 132
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 180
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d7d6eeca792efc49933e9e08680b769
-      internalID: -1438766180
+      spriteID: 5953ccf484bf60f4bac8cadcbb5763d0
+      internalID: 260404077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_2
+      name: Rattles_air-Sheet_2
       rect:
         serializedVersion: 2
-        x: 450
+        x: 360
         y: 0
-        width: 126
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 180
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3564b76235ce7b348aff409e5d5d5be4
-      internalID: 2015356121
+      spriteID: 46250dd97941e1142bdcbf41149dde37
+      internalID: 404853072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rattles_air-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 0
+        width: 180
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 926e8e178686a6b46b029f649ed2a270
+      internalID: -392893878
       vertices: []
       indices: 
       edges: []
@@ -201,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: c3b3a12fac93162499a9be2f11e44229
     internalID: 0
     vertices: []
     indices: 
@@ -209,9 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Rattles_dash-Sheet_0: 1549647895
-      Rattles_dash-Sheet_1: -1438766180
-      Rattles_dash-Sheet_2: 2015356121
+      Rattles_air-Sheet_0: 408336487
+      Rattles_air-Sheet_1: 260404077
+      Rattles_air-Sheet_2: 404853072
+      Rattles_air-Sheet_3: -392893878
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

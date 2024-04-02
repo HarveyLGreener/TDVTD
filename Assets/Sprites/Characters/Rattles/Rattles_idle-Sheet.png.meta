@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30b98a974c7a4704eb6acb92d6895061
+guid: 7ad7eba955a217142a9a81318c933322
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,64 +136,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_0
+      name: Rattles_idle-Sheet_0
       rect:
         serializedVersion: 2
-        x: 18
+        x: 0
         y: 0
-        width: 150
-        height: 216
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a648b33289eba443a74888482735b82
-      internalID: 1549647895
+      spriteID: 3eb3382afc4b14f489689ed0c625ec2f
+      internalID: -292846180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_1
+      name: Rattles_idle-Sheet_1
       rect:
         serializedVersion: 2
-        x: 234
+        x: 210
         y: 0
-        width: 132
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d7d6eeca792efc49933e9e08680b769
-      internalID: -1438766180
+      spriteID: 656efd3ca5647cf4096aace483238380
+      internalID: 377956716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_dash-Sheet_2
+      name: Rattles_idle-Sheet_2
       rect:
         serializedVersion: 2
-        x: 450
+        x: 420
         y: 0
-        width: 126
-        height: 222
-      alignment: 9
-      pivot: {x: 0.5, y: 0.54}
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3564b76235ce7b348aff409e5d5d5be4
-      internalID: 2015356121
+      spriteID: cbeb5ca752d197742a149aa9e97b6893
+      internalID: 1717378389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rattles_idle-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 210
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400853502ec1edb42b7dea38049e5ab3
+      internalID: -112394180
       vertices: []
       indices: 
       edges: []
@@ -209,9 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Rattles_dash-Sheet_0: 1549647895
-      Rattles_dash-Sheet_1: -1438766180
-      Rattles_dash-Sheet_2: 2015356121
+      Rattles_idle-Sheet_0: -292846180
+      Rattles_idle-Sheet_1: 377956716
+      Rattles_idle-Sheet_2: 1717378389
+      Rattles_idle-Sheet_3: -112394180
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
