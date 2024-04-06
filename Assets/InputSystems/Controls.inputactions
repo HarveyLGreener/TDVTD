@@ -10,7 +10,16 @@
                     "type": "PassThrough",
                     "id": "91bc0089-0bbe-4b60-9ee9-ec92813b18df",
                     "expectedControlType": "Stick",
-                    "processors": "StickDeadzone(min=0.025,max=0.5)",
+                    "processors": "StickDeadzone",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponMove",
+                    "type": "PassThrough",
+                    "id": "936f3120-bfc0-4068-b699-73444f4b23a2",
+                    "expectedControlType": "Stick",
+                    "processors": "StickDeadzone",
                     "interactions": "",
                     "initialStateCheck": false
                 },
@@ -51,7 +60,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller1",
+                    "groups": "",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -106,7 +115,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller1",
+                    "groups": "Controller1;Controller0",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -117,7 +126,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller1;Controller0",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -128,7 +137,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller1;Controller0",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -139,7 +148,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller1;Controller0",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -220,6 +229,105 @@
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD",
+                    "id": "063d87a8-beec-44b4-a85f-7d4750517eb4",
+                    "path": "2DVector(mode=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponMove",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "978ae69a-b1bf-49aa-9724-8accce5e608b",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1;Controller0",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "c2d81f84-6c3c-40f1-a30b-b280114bbba4",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1;Controller0",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "1d754303-d2bd-4112-946a-989840e95974",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1;Controller0",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "5e4e6e5e-0f8e-4b45-9ac2-a608739f14d6",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1;Controller0",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "up",
+                    "id": "0fb1d0d8-f240-41a1-a6d6-11f2c2ad62bb",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1;Controller0",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "e999feac-bd1b-40b0-b4df-990cd6a74bd1",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller1;Controller0",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "37d212b3-bcfd-42e5-8fe6-64d470328e3b",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller0;Controller1",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "68aa56cd-b5d4-4e61-abf6-9dc9b10c4d63",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller0;Controller1",
+                    "action": "WeaponMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

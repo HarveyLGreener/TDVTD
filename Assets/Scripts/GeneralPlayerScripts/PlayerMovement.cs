@@ -58,11 +58,11 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log(screenPos.x);
         //controls horizontal movement, moves at a constant speed
         float inputX = inputMovement.x;
-        if (inputX < 0 && !playerAttack.active)
+        if (inputX < 0)
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
-        if (inputX > 0 && !playerAttack.active)
+        if (inputX > 0)
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
