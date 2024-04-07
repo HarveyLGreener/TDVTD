@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Dash()
     {
         dashOnCooldown = true;
-        playerDashSprite.color = Color.red;
+        playerDashSprite.color = Color.gray;
         float inputX = inputMovement.x;
         float inputY = inputMovement.y;
         if (cupheadDash == false)
@@ -170,10 +170,11 @@ public class PlayerMovement : MonoBehaviour
     {
         iFrames = true;
         hit = true;
+        anim.Play("Hit", 0);
         Debug.Log("I was hit!");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         hit = false;
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
         iFrames = false;
     }
 }
