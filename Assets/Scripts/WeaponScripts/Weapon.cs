@@ -33,6 +33,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Collided");
         if (isAttacking && collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             Debug.Log("Hit");

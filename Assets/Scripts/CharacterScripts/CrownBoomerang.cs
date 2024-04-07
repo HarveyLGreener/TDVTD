@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrownBoomerang : MonoBehaviour
+public class CrownBoomerang : Weapon
 {
     [SerializeField] private float speed;
 
     //private Transform spriteTransform;
-    private Vector3 targetPos;
+    public Vector3 targetPos;
     private Vector3 velocity;
     private bool thrown;
-    private bool hit;
+    public bool hit;
+    public GameObject oppHit;
+    public bool isDamagingOpp;
+    private float direction;
     private Transform returnTarg;
+    [SerializeField] private Rattles rattles;
 
     private void Start()
     {
@@ -40,15 +44,73 @@ public class CrownBoomerang : MonoBehaviour
         }
     }
 
-    public void Throw(Vector3 target, Transform newReturnTarg)
+    public void setRattles(Rattles rattles)
     {
-        transform.SetParent(null);
+        this.rattles = rattles;
+    }
 
+    public void Throw(Vector3 target, Transform newReturnTarg, float direction)
+    {
+        this.direction = direction;
         targetPos = target;
-        velocity = ((target + new Vector3(0, 5, 0)) - transform.position).normalized * speed;
+        velocity = ((target + new Vector3(5, 0, 0)) - transform.position).normalized * speed * direction;
         returnTarg = newReturnTarg;
 
         thrown = true;
         hit = false;
+    }
+
+    public override void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject != rattles.gameObject)
+        {
+            base.OnTriggerEnter2D(col);
+
+            if (col.GetComponent<PlayerMovement>().iFrames)
+            {
+                oppHit = col.gameObject;
+                isDamagingOpp = true;
+                /*this.GetComponent<BoxCollider2D>().isTrigger = false;
+                StartCoroutine(WaitForDamagedCoroutine);
+                this.GetComponent<BoxCollider2D>().isTrigger = true;*/
+            }
+        }
+/*        else if(hit)
+        {
+            if(isDamagingOpp)
+            {
+                StartCoroutine(WaitForDamagedCoroutine());
+            }
+            else
+            {
+                rattles.holdingBoomerang = true;
+                Destroy(this.gameObject);
+            }
+        }*/
+    }
+
+    public void OnTriggerStay2D(Collider2D col)
+    {
+        if(hit && col.gameObject == rattles.gameObject)
+        {
+            if (isDamagingOpp)
+            {
+                StartCoroutine(WaitForDamagedCoroutine());
+            }
+            else
+            {
+                rattles.holdingBoomerang = true;
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
+    public IEnumerator WaitForDamagedCoroutine()
+    {
+        if(oppHit != null)
+        {
+            yield return new WaitUntil(() => !oppHit.GetComponent<PlayerMovement>().iFrames);
+        }
+        isDamagingOpp = false;
     }
 }
