@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
                 }
             }
         }
-        else if (collision.gameObject.GetComponent<PlayerMovement>() == null)
+        else if (collision.gameObject.GetComponent<PlayerMovement>() == null && collision.gameObject.GetComponent<Bullet>() == null)
         {
             Destroy(this.gameObject);
         }
