@@ -8,12 +8,6 @@ public class GeneralWeapon : MonoBehaviour
     private Vector2 weaponAim;
     private float scaleFactor = 1f;
     public GameObject weaponAnchor;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void OnAim(InputAction.CallbackContext context)
     {
         weaponAim = context.ReadValue<Vector2>();
@@ -28,14 +22,15 @@ public class GeneralWeapon : MonoBehaviour
         {
             if (inputX > 0)
             {
-                scaleFactor = -1f;
+                scaleFactor = 1f;
             }
             else if (inputX < 0)
             {
-                scaleFactor = 1f;
+                scaleFactor = -1f;
             }
+            this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
             weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
-            weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * -90f * scaleFactor));
+            weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
         }
     }
 }
