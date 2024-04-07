@@ -4,30 +4,29 @@ using UnityEngine;
 
 public class Rattles : PlayerMovement
 {
-    [SerializeField] private GameObject crown;
-    [SerializeField] private Rigidbody2D crownRB;
-    [SerializeField] private bool crownThrowActive;
-    [SerializeField] private float crownSpeed = 500f;
-    
+    //[SerializeField] private GameObject crown;
+    [SerializeField] private float crownSpeed = 50f;
+    [SerializeField] private Vector3 crownThrowDist = new Vector3(5, 0, 0);
+    [SerializeField] private CrownBoomerang crown;
+    private bool holdingBoomerang;
+    private Vector3 targetPos;
+
     // Start is called before the first frame update
     void Start()
     {
-        crownThrowActive = false;
+        holdingBoomerang = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if (holdingBoomerang && Input.GetKeyDown(KeyCode.C))
         {
-            if(!crownThrowActive)
-            {
-                if(transform.localScale.x > 0)
-                {
-                    crownRB.AddForce(new Vector2(crownSpeed, 0f));
-                }
-                crownThrowActive = true;
-            }
+            targetPos = crown.gameObject.transform.position + crownThrowDist;
+            holdingBoomerang = false;
+
+            crown.Throw(targetPos, transform);
         }
     }
+
 }
