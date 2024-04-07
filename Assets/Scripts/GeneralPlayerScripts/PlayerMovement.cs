@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Dash()
     {
         dashOnCooldown = true;
-        playerDashSprite.color = Color.gray;
+        playerDashSprite.color = Color.grey;
         float inputX = inputMovement.x;
         float inputY = inputMovement.y;
         if (cupheadDash == false)
