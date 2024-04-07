@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public int currentAnim = 0;
     public bool hit = false;
     public bool iFrames = false;
+    public SpriteRenderer playerDashSprite;
 
 
     // Start is called before the first frame update
@@ -47,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (canDash)
+        {
+            playerDashSprite.color = Color.white;
+        }
         if (!hit)
         {
             if (currentAnim != anim.GetCurrentAnimatorStateInfo(0).shortNameHash)
@@ -103,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Dash()
     {
         dashOnCooldown = true;
+        playerDashSprite.color = Color.red;
         float inputX = inputMovement.x;
         float inputY = inputMovement.y;
         if (cupheadDash == false)
