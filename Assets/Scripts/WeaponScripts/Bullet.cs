@@ -5,9 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed;
-    public bool right = true;
     public GameObject player;
     public int dmg;
+    public float direction;
+    public bool destroy = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,24 +18,34 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (right)
-        {
-            transform.localPosition += transform.right * speed * Time.deltaTime;
-        }
-        else
-        {
-            transform.localPosition -= transform.right * speed * Time.deltaTime;
-        }
+        transform.localPosition += transform.right * speed * Time.deltaTime * direction;
+    }
 
+    private void LateUpdate()
+    {
+        if (destroy)
+        {
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerMovement>() != null && collision.gameObject != player)
         {
-            collision.gameObject.GetComponent<PlayerMovement>().hp-= dmg;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            this.gameObject.GetComponent<Collider2D>().enabled = false;
+            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
+                StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());
+                if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
         }
-        if (collision.gameObject != player)
+        else if (collision.gameObject.GetComponent<PlayerMovement>() == null && collision.gameObject.GetComponent<Bullet>() == null)
         {
             Destroy(this.gameObject);
         }

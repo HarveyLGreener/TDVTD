@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public bool attacked = false;
     public Animator anim;
     public int currentAnim = 0;
+    public bool hit = false;
+    public bool iFrames = false;
+    public SpriteRenderer playerDashSprite;
 
 
     // Start is called before the first frame update
@@ -42,81 +45,70 @@ public class PlayerMovement : MonoBehaviour
         dashed = context.action.triggered;
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        attacked = true;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (currentAnim != anim.GetCurrentAnimatorStateInfo(0).shortNameHash)
+        if (canDash)
         {
-            changeCollider();
+            playerDashSprite.color = Color.white;
         }
-        currentAnim = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
-        //Debug.Log(screenPos.x);
-        //controls horizontal movement, moves at a constant speed
-        float inputX = inputMovement.x;
-        if (inputX < 0 && !playerAttack.active)
+        if (!hit)
         {
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-        }
-        if (inputX > 0 && !playerAttack.active)
-        {
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
-        }
-        if (inputX != 0)
-        {
-            anim.SetBool("Running", true);
-        }
-        else
-        {
-           anim.SetBool("Running", false);
+            if (currentAnim != anim.GetCurrentAnimatorStateInfo(0).shortNameHash)
+            {
+                changeCollider();
+            }
+            currentAnim = anim.GetCurrentAnimatorStateInfo(0).shortNameHash;
+            //Debug.Log(screenPos.x);
+            //controls horizontal movement, moves at a constant speed
+            float inputX = inputMovement.x;
+            if (inputX != 0)
+            {
+                anim.SetBool("Running", true);
+            }
+            else
+            {
+                anim.SetBool("Running", false);
 
-        }
-        transform.position += transform.right * inputX * MoveSpeed * Time.deltaTime;
+            }
+            transform.position += transform.right * inputX * MoveSpeed * Time.deltaTime;
 
 
-        //controls jumping, uses an impulse force to give the feeling of a jump
-        float inputY = inputMovement.y;
-        if (rb.velocity.y == 0 && dashOnCooldown == false && canJump == true)
-        {
-            canDash = true;
-            anim.SetBool("Falling", false);
-        }
-        if (rb.velocity.y == 0 && inputY > 0 && canJump == true)
-        {
-            rb.AddForce(transform.up * 10, ForceMode2D.Impulse);
-        }
-        if (rb.velocity.y < -20f)
-        {
-           rb.velocity = new Vector2(rb.velocity.x, -20f);
-        }
-        if (rb.velocity.y < -0.05f || rb.velocity.y > 0.05f)
-        {
-            anim.SetBool("Falling", true);
-        }
-        if ((canDash == true) & (dashed == true))
-        {
-            StartCoroutine(Dash());
-            anim.SetTrigger("Dashing");
-            changeCollider();
+            //controls jumping, uses an impulse force to give the feeling of a jump
+            float inputY = inputMovement.y;
+            if (rb.velocity.y == 0 && dashOnCooldown == false && canJump == true)
+            {
+                canDash = true;
+                anim.SetBool("Falling", false);
+            }
+            if (rb.velocity.y == 0 && inputY > 0 && canJump == true)
+            {
+                rb.AddForce(transform.up * 10, ForceMode2D.Impulse);
+            }
+            if (rb.velocity.y < -20f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -20f);
+            }
+            if (rb.velocity.y < -0.05f || rb.velocity.y > 0.05f)
+            {
+                anim.SetBool("Falling", true);
+            }
+            if ((canDash == true) & (dashed == true))
+            {
+                StartCoroutine(Dash());
+                anim.SetTrigger("Dashing");
+                changeCollider();
+            }
         }
         if (hp <= 0)
         {
             Destroy(this.gameObject);
         }
-        if (attacked)
-        {
-            playerAttack.active = true;
-            attacked = false;
-        }
-
     }
     IEnumerator Dash()
     {
         dashOnCooldown = true;
+        playerDashSprite.color = Color.red;
         float inputX = inputMovement.x;
         float inputY = inputMovement.y;
         if (cupheadDash == false)
@@ -172,5 +164,16 @@ public class PlayerMovement : MonoBehaviour
     {
         Destroy(gameObject.GetComponent<PolygonCollider2D>());
         gameObject.AddComponent<PolygonCollider2D>();
+    }
+
+    public IEnumerator Damaged()
+    {
+        iFrames = true;
+        hit = true;
+        Debug.Log("I was hit!");
+        yield return new WaitForSeconds(0.5f);
+        hit = false;
+        yield return new WaitForSeconds(0.75f);
+        iFrames = false;
     }
 }
