@@ -25,39 +25,42 @@ public class GeneralWeapon : MonoBehaviour
     {
         float inputX = weaponAim.x;
         float inputY = weaponAim.y;
-        if (attacked)
+        if (!this.gameObject.GetComponent<PlayerMovement>().hit)
         {
-            foreach (GameObject weapon in weapons)
+            if (attacked)
             {
+                foreach (GameObject weapon in weapons)
+                {
+                    if (isSword)
+                    {
+                        StartCoroutine(weapon.GetComponent<Sword>().Attack());
+                    }
+                    else
+                    {
+                        StartCoroutine(weapon.GetComponent<Gun>().Attack());
+                    }
+                }
+            }
+            else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking)
+            {
+                if (inputX > 0)
+                {
+                    scaleFactor = 1f;
+                }
+                else if (inputX < 0)
+                {
+                    scaleFactor = -1f;
+                }
                 if (isSword)
                 {
-                    StartCoroutine(weapon.GetComponent<Sword>().Attack());
+                    this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
                 }
                 else
                 {
-                    StartCoroutine(weapon.GetComponent<Gun>().Attack());
+                    this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
+                    weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
                 }
-            }
-        }
-        else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking)
-        {
-            if (inputX > 0)
-            {
-                scaleFactor = 1f;
-            }
-            else if (inputX < 0)
-            {
-                scaleFactor = -1f;
-            }
-            if (isSword)
-            {
-                this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
-            }
-            else
-            {
-                this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
-                weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
-                weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
             }
         }
     }
