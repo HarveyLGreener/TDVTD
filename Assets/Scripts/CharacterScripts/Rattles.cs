@@ -33,6 +33,17 @@ public class Rattles : PlayerMovement
 
             crownToThr.Throw(targetPos, transform, direction);
         }
+
+        if(!holdingBoomerang && crownToThr == null)
+        {
+            StartCoroutine(CrownCooldown());
+        }
+    }
+
+    public IEnumerator CrownCooldown()
+    {
+        yield return new WaitForSeconds(3.0f);
+        holdingBoomerang = true;
     }
 
 }

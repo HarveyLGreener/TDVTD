@@ -99,7 +99,7 @@ public class CrownBoomerang : Weapon
             }
             else
             {
-                rattles.holdingBoomerang = true;
+                //rattles.holdingBoomerang = true;
                 Destroy(this.gameObject);
             }
         }
