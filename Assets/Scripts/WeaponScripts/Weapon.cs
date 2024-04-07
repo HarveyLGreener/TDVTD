@@ -6,31 +6,29 @@ public class Weapon : MonoBehaviour
 {
     public int dmg = 1;
     [SerializeField] protected float attackTime = 1f;
-    [SerializeField] protected bool isAttacking = false;
+    [SerializeField] public bool isAttacking = false;
+    public Animator anim;
 
     protected virtual void OnEnable()
     {
-        isAttacking = false;
-        if (isAttacking == false)
-        {
-            StartCoroutine(Attack());
-        }
     }
 
     private void LateUpdate()
     {
-        if (!isAttacking)
-        {
-            this.gameObject.active = false;
-        }
     }
 
     public virtual IEnumerator Attack()
     {
-        isAttacking = true;
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(attackTime);
-        isAttacking = false;
+        if (!isAttacking)
+        {
+            isAttacking = true;
+            this.GetComponent<Collider2D>().enabled = true;
+            anim.SetTrigger("Attack");
+            yield return new WaitForSeconds(0.33f);
+            this.GetComponent<Collider2D>().enabled = false;
+            yield return new WaitForSeconds(attackTime);
+            isAttacking = false;
+        }
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
@@ -38,8 +36,11 @@ public class Weapon : MonoBehaviour
         if (isAttacking && collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             Debug.Log("Hit");
-            collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
-            this.gameObject.active = false;
+            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
+                StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());
+            }
         }
     }
 
