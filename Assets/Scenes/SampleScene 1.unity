@@ -641,7 +641,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530357331}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270fd3065a0c711468c7dbf66d0ac0cd, type: 3}
   m_Name: 
@@ -649,9 +649,10 @@ MonoBehaviour:
   dmg: 1
   attackTime: 1
   isAttacking: 0
+  anim: {fileID: 530357333}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
-  Target: {x: 0, y: 0, z: 0}
+  direction: 0
 --- !u!212 &530357335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1438,6 +1439,7 @@ GameObject:
   - component: {fileID: 1874098246}
   - component: {fileID: 1874098247}
   - component: {fileID: 1874098248}
+  - component: {fileID: 1874098249}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -1600,8 +1602,8 @@ MonoBehaviour:
     m_ActionName: Player/Dash[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1874098245}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 1874098249}
+        m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -1627,7 +1629,19 @@ MonoBehaviour:
     m_ActionId: 76680dfa-8095-404d-b8c7-504a48475855
     m_ActionName: Player1/Attack[/Keyboard/z]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1874098249}
+        m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 936f3120-bfc0-4068-b699-73444f4b23a2
     m_ActionName: Player/WeaponMove[/DualSenseGamepadHID/rightStick/up,/DualSenseGamepadHID1/rightStick/up,/DualSenseGamepadHID/rightStick/down,/DualSenseGamepadHID1/rightStick/down,/DualSenseGamepadHID/rightStick/left,/DualSenseGamepadHID1/rightStick/left,/DualSenseGamepadHID/rightStick/right,/DualSenseGamepadHID1/rightStick/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1817,6 +1831,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &1874098249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874098236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95abdeefeb0782a43b7f438e4b7c56ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAnchor: {fileID: 1986491738}
+  isSword: 1
+  weapons:
+  - {fileID: 1986491738}
 --- !u!1 &1986491738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1928,7 @@ Transform:
   m_GameObject: {fileID: 1986491738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.094, y: -0.403, z: 0}
+  m_LocalPosition: {x: 1.07, y: -0.8, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1917,8 +1947,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 1
-  attackTime: 1
-  isAttacking: 1
+  attackTime: 0.4
+  isAttacking: 0
+  anim: {fileID: 1986491744}
 --- !u!95 &1986491744
 Animator:
   serializedVersion: 5
@@ -1947,7 +1978,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986491738}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1972,7 +2003,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.050177813, y: 0.27528164}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1983,7 +2014,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 2.8}
+  m_Size: {x: 0.84434295, y: 2.0180821}
   m_EdgeRadius: 0
 --- !u!1 &2094621296
 GameObject:
@@ -2001,7 +2032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2094621297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2009,7 +2040,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094621296}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
@@ -2145,7 +2176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407348242362803660}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 270fd3065a0c711468c7dbf66d0ac0cd, type: 3}
   m_Name: 
@@ -2153,9 +2184,10 @@ MonoBehaviour:
   dmg: 1
   attackTime: 1
   isAttacking: 0
+  anim: {fileID: 2638571952269329513}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
-  Target: {x: 0, y: 0, z: 0}
+  direction: 0
 --- !u!1 &407348242362803660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,6 +2519,7 @@ GameObject:
   - component: {fileID: 4893170196723562450}
   - component: {fileID: 6517112957570491099}
   - component: {fileID: 6004109855224557709}
+  - component: {fileID: 7499997033446347287}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -2562,8 +2595,8 @@ MonoBehaviour:
     m_ActionName: Player1/Dash[/Keyboard/rightCtrl]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4431257822006067939}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+      - m_Target: {fileID: 7499997033446347285}
+        m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -2614,6 +2647,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponAnchor: {fileID: 270524937}
+  isSword: 0
+  weapons:
+  - {fileID: 407348242362803660}
+  - {fileID: 530357331}
+--- !u!61 &7499997033446347287
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103049647131701753}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.1, y: 2.4}
+    newSize: {x: 1.26, y: 2.1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.15, y: 1}
+  m_EdgeRadius: 0
 --- !u!212 &8336083636558317010
 SpriteRenderer:
   m_ObjectHideFlags: 0

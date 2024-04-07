@@ -42,11 +42,6 @@ public class PlayerMovement : MonoBehaviour
         dashed = context.action.triggered;
     }
 
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        attacked = true;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -99,12 +94,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (attacked)
-        {
-            playerAttack.active = true;
-            attacked = false;
-        }
-
     }
     IEnumerator Dash()
     {
