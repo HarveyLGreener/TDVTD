@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
         if (isAttacking && collision.gameObject.GetComponent<PlayerMovement>() != null)
         {
             Debug.Log("Hit");
-            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames && !collision.gameObject.GetComponent<PlayerMovement>().isParrying)
+            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames && !collision.gameObject.GetComponent<PlayerMovement>().isParrying && collision.gameObject.GetComponent<PlayerMovement>().hp>0)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
                 StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());

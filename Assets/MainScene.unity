@@ -952,6 +952,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &285875091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3600572829964219650, guid: bbbfda5bc3ec5b143b2ab779a3c499b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1585439342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &285875092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285875091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a8ec69875d61224eb893a4b36b7d443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &329012156
 GameObject:
   m_ObjectHideFlags: 0

@@ -231,12 +231,12 @@ public class PlayerMovement : MonoBehaviour
     {
         isParrying = true;
         parriesUsed = parriesUsed + 1;
+        anim.Play("Parry", 0);
+        yield return new WaitForSeconds(parryClip.length*2f);
         if (parriesUsed >= 1)
         {
             playerParry.color = Color.red;
         }
-        anim.Play("Parry", 0);
-        yield return new WaitForSeconds(parryClip.length*2f);
         isParrying = false;
     }
 }

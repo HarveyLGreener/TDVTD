@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         GameObject objectHit = collision.gameObject;
         if (objectHit.GetComponent<PlayerMovement>() != null && objectHit != player)
         {
-            if (!objectHit.GetComponent<PlayerMovement>().iFrames && !objectHit.GetComponent<PlayerMovement>().isParrying)
+            if (!objectHit.GetComponent<PlayerMovement>().iFrames && !objectHit.GetComponent<PlayerMovement>().isParrying && objectHit.GetComponent<PlayerMovement>().hp > 0)
             {
                 destroy = false;
                 this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
             else if (objectHit.GetComponent<PlayerMovement>().isParrying)
             {
                 player = objectHit;
+                player.GetComponent<PlayerMovement>().parriesUsed++;
                 direction = direction * -1;
                 this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             }
