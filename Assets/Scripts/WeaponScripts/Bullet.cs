@@ -33,16 +33,21 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerMovement>() != null && collision.gameObject != player)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            this.gameObject.GetComponent<Collider2D>().enabled = false;
-            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
+            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames && !collision.gameObject.GetComponent<PlayerMovement>().isParrying)
             {
+                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                this.gameObject.GetComponent<Collider2D>().enabled = false;
                 collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
                 StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());
                 if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
                 {
                     Destroy(this.gameObject);
                 }
+            }
+            else if (collision.gameObject.GetComponent<PlayerMovement>().isParrying)
+            {
+                player = collision.gameObject;
+                direction = direction * -1;
             }
         }
         else if (collision.gameObject.GetComponent<PlayerMovement>() == null && collision.gameObject.GetComponent<Bullet>() == null)

@@ -28,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
     public bool iFrames = false;
     public SpriteRenderer playerDashSprite;
     public GameObject winText;
+    public bool parry = false;
+    public bool isParrying = false;
+    public AnimationClip parryClip;
+    public int parriesUsed = 0;
 
 
     // Start is called before the first frame update
@@ -43,7 +47,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        dashed = context.action.triggered;
+            dashed = context.action.triggered;
+
+    }
+
+    public void OnParry(InputAction.CallbackContext context)
+    {
+            parry = context.action.triggered;
     }
 
     // Update is called once per frame
@@ -53,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerDashSprite.color = Color.white;
         }
-        if (!hit)
+        if (!hit & !isParrying)
         {
             if (currentAnim != anim.GetCurrentAnimatorStateInfo(0).shortNameHash)
             {
@@ -110,6 +120,10 @@ public class PlayerMovement : MonoBehaviour
             }
             winText.active = true;
             this.enabled = false;
+        }
+        if (parry && parriesUsed < 1 && !isParrying) 
+        {
+            StartCoroutine(Parry());
         }
     }
     IEnumerator Dash()
@@ -183,5 +197,14 @@ public class PlayerMovement : MonoBehaviour
         hit = false;
         yield return new WaitForSeconds(0.5f);
         iFrames = false;
+    }
+
+    public IEnumerator Parry()
+    {
+        isParrying = true;
+        parriesUsed = parriesUsed + 1;
+        anim.Play("Parry", 0);
+        yield return new WaitForSeconds(parryClip.length*2f);
+        isParrying = false;
     }
 }
