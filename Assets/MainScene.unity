@@ -265,7 +265,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &23963687
@@ -865,7 +865,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &329012156
@@ -2298,7 +2298,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1376820963
@@ -3440,6 +3440,8 @@ MonoBehaviour:
   parryClip: {fileID: 7400000, guid: 9cb58942e590bfb499d2adb659907aa0, type: 2}
   parriesUsed: -1
   activeAbility: 0
+  guns: {fileID: 0}
+  phantomDissolve: {fileID: 0}
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -3848,7 +3850,7 @@ MonoBehaviour:
   horizontalDash: 8
   verticalDash: 10
   dashOnCooldown: 0
-  cupheadDash: 0
+  cupheadDash: 1
   dashTime: 0.25
   canJump: 1
   hp: 3
@@ -3869,6 +3871,9 @@ MonoBehaviour:
   parryClip: {fileID: 7400000, guid: 6684cf4786ecfe7428a347babf7bd398, type: 2}
   parriesUsed: 0
   activeAbility: 0
+  guns: {fileID: 270524937}
+  phantomDissolve: {fileID: 1184311229208367075, guid: baed1ea121d164d40a3059376468cc54,
+    type: 3}
 --- !u!95 &4893170196723562450
 Animator:
   serializedVersion: 5

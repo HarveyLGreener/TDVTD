@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     public int parriesUsed = 0;
     public bool activeAbility=false;
     public GameObject guns;
+    public GameObject phantomDissolve;
 
 
     // Start is called before the first frame update
@@ -174,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (cupheadDash == true)
         {
+            GameObject decoy = Instantiate(phantomDissolve, this.transform.position, Quaternion.identity);
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             guns.active = false;
             iFrames = true;
@@ -198,7 +200,9 @@ public class PlayerMovement : MonoBehaviour
             iFrames = false;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             guns.active = true;
-            yield return new WaitForSeconds(0.45f);
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.25f);
+            Destroy(decoy);
             dashOnCooldown = false;
 
         }

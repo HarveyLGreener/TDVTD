@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eed33c26a2df48143b32550752d2268e
+guid: cefec52393bf53e4f9bb397d1bdbd5b2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -78,31 +78,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -125,16 +101,28 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Phantom_dash-Sheet_0
+      name: Rattles_active-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -143,19 +131,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6abe35944fe524e4b9f6a15c944b80ad
-      internalID: 800560252
+      spriteID: 6af10a770bf911d44b2889c347fc8bf3
+      internalID: 1252448062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phantom_dash-Sheet_1
+      name: Rattles_active-Sheet_1
       rect:
         serializedVersion: 2
-        x: 210
+        x: 240
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -164,19 +152,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7143696bc5cf28d45bbb8030b53d131f
-      internalID: -1563560707
+      spriteID: 221656eb38de3b2438dff4de7985d97b
+      internalID: -548978375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phantom_dash-Sheet_2
+      name: Rattles_active-Sheet_2
       rect:
         serializedVersion: 2
-        x: 420
+        x: 480
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -185,19 +173,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 203f9117a3aa19a4690c598604d49b41
-      internalID: 1078382078
+      spriteID: 2a0c64689d593c142bc0ced5f90fc3de
+      internalID: -995329490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Phantom_dash-Sheet_3
+      name: Rattles_active-Sheet_3
       rect:
         serializedVersion: 2
-        x: 630
+        x: 720
         y: 0
-        width: 210
+        width: 240
         height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -206,8 +194,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 177b688fa5d1b474fa2f9e81cc7fef4c
-      internalID: 1151750344
+      spriteID: fd8ac9dd2054dbb4982e914bd9dec6b1
+      internalID: 1022687769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rattles_active-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 240
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d6f6fdfb2cde5f4f84e5f8ee89af95e
+      internalID: -261434092
       vertices: []
       indices: 
       edges: []
@@ -215,7 +224,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6acb4bf8355b8a34188f21e83d2b3b35
+    spriteID: 502e54ba78ba52c48a03428804233688
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Phantom_dash-Sheet_0: 800560252
-      Phantom_dash-Sheet_1: -1563560707
-      Phantom_dash-Sheet_2: 1078382078
-      Phantom_dash-Sheet_3: 1151750344
+      Rattles_active-Sheet_0: 1252448062
+      Rattles_active-Sheet_1: -548978375
+      Rattles_active-Sheet_2: -995329490
+      Rattles_active-Sheet_3: 1022687769
+      Rattles_active-Sheet_4: -261434092
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
