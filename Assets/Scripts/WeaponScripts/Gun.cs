@@ -17,6 +17,10 @@ public class Gun : Weapon
             bullet.GetComponent<Bullet>().direction = this.transform.localScale.x;
             bullet.GetComponent<Bullet>().player = this.GetComponentInParent<PlayerMovement>().gameObject;
             bullet.GetComponent<Bullet>().dmg = dmg;
+            if (bullet.GetComponent<SpriteRenderer>().enabled)
+            {
+                Destroy(bullet, 2.0f);
+            }
             yield return new WaitForSeconds(attackTime);
             isAttacking = false;
         }

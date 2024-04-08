@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
             {
                 player = objectHit;
                 direction = direction * -1;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }
         else if (objectHit.GetComponent<PlayerMovement>() == null && objectHit.GetComponent<Bullet>() == null)

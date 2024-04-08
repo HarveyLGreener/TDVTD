@@ -68,6 +68,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        if (iFrames)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+        }
+        else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        }
         if (canDash)
         {
             playerDashSprite.color = Color.white;
