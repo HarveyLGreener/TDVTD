@@ -11,9 +11,10 @@ public class GeneralWeapon : MonoBehaviour
     public bool isSword = true;
     private bool attacked = false;
     public GameObject[] weapons;
+    public BoxCollider2D colliderOfWeapon;
     public void OnAim(InputAction.CallbackContext context)
     {
-        weaponAim = context.ReadValue<Vector2>();
+        weaponAim = context.ReadValue<Vector2>(); 
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
@@ -33,6 +34,11 @@ public class GeneralWeapon : MonoBehaviour
                 {
                     if (isSword)
                     {
+                        colliderOfWeapon = weapon.AddComponent<BoxCollider2D>();
+                        colliderOfWeapon.offset = new Vector2(0.05f, 0.28f);
+                        colliderOfWeapon.size = new Vector2(0.85f, 2.0f);
+                        colliderOfWeapon.isTrigger = true;
+                        colliderOfWeapon.enabled = false;
                         StartCoroutine(weapon.GetComponent<Sword>().Attack());
                     }
                     else
