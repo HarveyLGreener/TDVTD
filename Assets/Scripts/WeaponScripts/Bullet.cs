@@ -25,34 +25,37 @@ public class Bullet : MonoBehaviour
     {
         if (destroy)
         {
-
+            Destroy(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null && collision.gameObject != player)
+        GameObject objectHit = collision.gameObject;
+        if (objectHit.GetComponent<PlayerMovement>() != null && objectHit != player)
         {
-            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames && !collision.gameObject.GetComponent<PlayerMovement>().isParrying)
+            if (!objectHit.GetComponent<PlayerMovement>().iFrames && !objectHit.GetComponent<PlayerMovement>().isParrying)
             {
-                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                this.gameObject.GetComponent<Collider2D>().enabled = false;
-                collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
-                StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());
-                if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
-                {
-                    Destroy(this.gameObject);
-                }
+                objectHit.GetComponent<PlayerMovement>().hp -= dmg;
+                StartCoroutine(objectHit.GetComponent<PlayerMovement>().Damaged());
+                StartCoroutine(waitToDestroy(objectHit));
+
             }
-            else if (collision.gameObject.GetComponent<PlayerMovement>().isParrying)
+            else if (objectHit.GetComponent<PlayerMovement>().isParrying)
             {
-                player = collision.gameObject;
+                player = objectHit;
                 direction = direction * -1;
             }
         }
-        else if (collision.gameObject.GetComponent<PlayerMovement>() == null && collision.gameObject.GetComponent<Bullet>() == null)
+        else if (objectHit.GetComponent<PlayerMovement>() == null && objectHit.GetComponent<Bullet>() == null)
         {
-            Destroy(this.gameObject);
+            destroy = true;
         }
+    }
+
+    public IEnumerator waitToDestroy(GameObject collision)
+    {
+        yield return new WaitUntil(() => !collision.GetComponent<PlayerMovement>().iFrames);
+        destroy = true;
     }
 }
