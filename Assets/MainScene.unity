@@ -303,6 +303,7 @@ MonoBehaviour:
   phantom: {fileID: 7103049647131701753}
   hitOpp: {fileID: 0}
   oppMovementDisabled: 0
+  inSmoke: {fileID: 1874098250}
 --- !u!212 &23963690
 SpriteRenderer:
   m_ObjectHideFlags: 0
