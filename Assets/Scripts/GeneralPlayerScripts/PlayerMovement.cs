@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public bool hit = false;
     public bool iFrames = false;
     public SpriteRenderer playerDashSprite;
+    public SpriteRenderer playerParry;
+    public SpriteRenderer passive;
+    public SpriteRenderer active;
     public GameObject winText;
     public bool parry = false;
     public bool isParrying = false;
@@ -202,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Parry()
     {
         isParrying = true;
+        playerParry.color = Color.red;
         parriesUsed = parriesUsed + 1;
         anim.Play("Parry", 0);
         yield return new WaitForSeconds(parryClip.length*2f);
