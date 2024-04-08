@@ -11,6 +11,7 @@ public class Rattles : PlayerMovement
     [SerializeField] private CrownBoomerang crownToThr;
     private float direction;
     public bool holdingBoomerang;
+    private bool cooldownActive = false;
     private Vector3 targetPos;
 
     // Start is called before the first frame update
@@ -34,7 +35,7 @@ public class Rattles : PlayerMovement
             crownToThr.Throw(targetPos, transform, direction);
         }
 
-        if(!holdingBoomerang && crownToThr == null)
+        if(!holdingBoomerang && !cooldownActive && crownToThr == null)
         {
             StartCoroutine(CrownCooldown());
         }
@@ -42,8 +43,10 @@ public class Rattles : PlayerMovement
 
     public IEnumerator CrownCooldown()
     {
+        cooldownActive = true;
         yield return new WaitForSeconds(3.0f);
         holdingBoomerang = true;
+        cooldownActive = false;
     }
 
 }
