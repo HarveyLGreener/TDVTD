@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8be70b0bebaf08143b014e35b48e8a8a
+guid: 3c9d13fd2a2f9f448969455bba929b13
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rattles_run-Sheet_0
+      name: Rattles_run-Sheet_noSword_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d50a894149cbfe49b287d292962035e
-      internalID: 1335181886
+      spriteID: 42c38eed1e406e44cb94fb5a2db2b5f0
+      internalID: 1522632059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_run-Sheet_1
+      name: Rattles_run-Sheet_noSword_1
       rect:
         serializedVersion: 2
         x: 330
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e756bd2f28fe3b4d9b25b85146c623e
-      internalID: 1337326535
+      spriteID: f57f7bde41129ea47b14c3af62b2af4e
+      internalID: 191447450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_run-Sheet_2
+      name: Rattles_run-Sheet_noSword_2
       rect:
         serializedVersion: 2
         x: 660
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cde84c0601ee62849af39d834110c9b5
-      internalID: -1676784139
+      spriteID: e8a5ce646b14ba241a6580fe3840e36f
+      internalID: -226647378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rattles_run-Sheet_3
+      name: Rattles_run-Sheet_noSword_3
       rect:
         serializedVersion: 2
         x: 990
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30a5455b92197e0478554c900c1dbdd4
-      internalID: 1997626813
+      spriteID: 58a8ce699f0afa54ba023ae7a3935adb
+      internalID: 333461741
       vertices: []
       indices: 
       edges: []
@@ -222,7 +222,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d2c15446f1ed7bf4c8d7454da2e3b37d
+    spriteID: 67b640eef57652b48b71c3d9638a9a75
     internalID: 0
     vertices: []
     indices: 
@@ -230,10 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Rattles_run-Sheet_0: 1335181886
-      Rattles_run-Sheet_1: 1337326535
-      Rattles_run-Sheet_2: -1676784139
-      Rattles_run-Sheet_3: 1997626813
+      Rattles_run-Sheet_noSword_0: 1522632059
+      Rattles_run-Sheet_noSword_1: 191447450
+      Rattles_run-Sheet_noSword_2: -226647378
+      Rattles_run-Sheet_noSword_3: 333461741
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
