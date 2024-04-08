@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public AnimationClip parryClip;
     public int parriesUsed = 0;
     public bool activeAbility=false;
+    public GameObject guns;
 
 
     // Start is called before the first frame update
@@ -167,35 +168,41 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, verticalDash * -1);
             }
+            canDash = false;
+            yield return new WaitForSeconds(0.75f);
+            dashOnCooldown = false;
         }
         else if (cupheadDash == true)
         {
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            guns.active = false;
+            iFrames = true;
             if (inputX > 0)
             {
-                rb.velocity = new Vector2(horizontalDash, 0);
-                FallSpeed = 0;
-                yield return new WaitForSeconds(dashTime);
-                FallSpeed = OriginalFallSpeed;
+                rb.velocity = new Vector2(horizontalDash, rb.velocity.y);
             }
             else if (inputX < 0)
             {
-                rb.velocity = new Vector2(horizontalDash * -1, 0);
-                FallSpeed = 0;
-                yield return new WaitForSeconds(dashTime);
-                FallSpeed = OriginalFallSpeed;
+                rb.velocity = new Vector2(horizontalDash * -1, rb.velocity.y);
             }
-            if (inputY > 0 && inputX > 0)
+            if (inputY > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, verticalDash);
             }
-            else if (inputY < 0 && inputX > 0)
+            else if (inputY < 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, verticalDash * -1);
             }
+            canDash = false;
+            yield return new WaitForSeconds(0.3f);
+            iFrames = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            guns.active = true;
+            yield return new WaitForSeconds(0.45f);
+            dashOnCooldown = false;
+
         }
-        canDash = false;
-        yield return new WaitForSeconds(0.75f);
-        dashOnCooldown = false;
+
     }
 
     public void changeCollider()
