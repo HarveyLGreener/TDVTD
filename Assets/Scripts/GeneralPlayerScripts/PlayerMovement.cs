@@ -230,8 +230,11 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Parry()
     {
         isParrying = true;
-        playerParry.color = Color.red;
         parriesUsed = parriesUsed + 1;
+        if (parriesUsed >= 1)
+        {
+            playerParry.color = Color.red;
+        }
         anim.Play("Parry", 0);
         yield return new WaitForSeconds(parryClip.length*2f);
         isParrying = false;

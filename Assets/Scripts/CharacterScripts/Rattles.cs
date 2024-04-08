@@ -26,6 +26,7 @@ public class Rattles : PlayerMovement
         direction = transform.localScale.x;
         if (holdingBoomerang && activeAbility)
         {
+            active.color = Color.grey;
             crownToThr = Instantiate(crown, transform.position, Quaternion.identity);
             crownToThr.setRattles(this);
 
@@ -45,10 +46,12 @@ public class Rattles : PlayerMovement
 
     public IEnumerator CrownCooldown()
     {
+
         cooldownActive = true;
         yield return new WaitForSeconds(3.0f);
         holdingBoomerang = true;
         cooldownActive = false;
+        active.color = Color.white;
     }
 
 }

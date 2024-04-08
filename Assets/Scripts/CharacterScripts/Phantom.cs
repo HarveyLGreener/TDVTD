@@ -8,12 +8,14 @@ public class Phantom : MonoBehaviour
     [SerializeField] private bool activeCountdown = false;
     [SerializeField] private float smokeScreenLength = 0f;
     public PlayerMovement phantom;
+    public SpriteRenderer activeRender;
 
     // Update is called once per frame
     void Update()
     {
         if(!activeCountdown && phantom.activeAbility)
         {
+            activeRender.color = Color.grey;
             CircleCollider2D colliderOfWeapon = smokeScreen.AddComponent<CircleCollider2D>();
             colliderOfWeapon.radius = 1f;
             colliderOfWeapon.isTrigger = true;
@@ -32,6 +34,7 @@ public class Phantom : MonoBehaviour
         smokeScreen.SetActive(false);
         Destroy(collider);
         yield return new WaitForSeconds(3.0f);
+        activeRender.color = Color.white;
         activeCountdown = false;
     }
 }
