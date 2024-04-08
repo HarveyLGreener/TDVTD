@@ -102,7 +102,9 @@ public class PlayerMovement : MonoBehaviour
         }
         if (hp <= 0)
         {
-            Destroy(this.gameObject);
+            anim.Play("Dead");
+            playerAttack.GetComponent<SpriteRenderer>().enabled = false;
+            this.enabled = false;
         }
     }
     IEnumerator Dash()
