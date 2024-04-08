@@ -7,11 +7,12 @@ public class Phantom : MonoBehaviour
     [SerializeField] private GameObject smokeScreen;
     [SerializeField] private bool activeCountdown = false;
     [SerializeField] private float smokeScreenLength = 0.75f;
+    public PlayerMovement phantom;
 
     // Update is called once per frame
     void Update()
     {
-        if(!activeCountdown && Input.GetKeyDown(KeyCode.K))
+        if(!activeCountdown && phantom.activeAbility)
         {
             smokeScreen.SetActive(true);
             if(!activeCountdown)

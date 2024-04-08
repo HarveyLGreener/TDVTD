@@ -21,24 +21,26 @@ public class Rattles : PlayerMovement
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         direction = transform.localScale.x;
-        if (holdingBoomerang && Input.GetKeyDown(KeyCode.C))
+        if (holdingBoomerang && activeAbility)
         {
             crownToThr = Instantiate(crown, transform.position, Quaternion.identity);
             crownToThr.setRattles(this);
 
-            targetPos = this.gameObject.transform.position + (crownThrowDist*direction);
+            targetPos = this.gameObject.transform.position + (crownThrowDist * direction);
             holdingBoomerang = false;
 
             crownToThr.Throw(targetPos, transform, direction);
         }
 
-        if(!holdingBoomerang && !cooldownActive && crownToThr == null)
+        if (!holdingBoomerang && !cooldownActive && crownToThr == null)
         {
             StartCoroutine(CrownCooldown());
         }
+        base.Update();
+
     }
 
     public IEnumerator CrownCooldown()

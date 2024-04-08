@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isParrying = false;
     public AnimationClip parryClip;
     public int parriesUsed = 0;
+    public bool activeAbility=false;
 
 
     // Start is called before the first frame update
@@ -59,8 +60,13 @@ public class PlayerMovement : MonoBehaviour
             parry = context.action.triggered;
     }
 
+    public void OnActive(InputAction.CallbackContext context)
+    {
+        activeAbility = context.action.triggered;
+    }
+
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if (canDash)
         {

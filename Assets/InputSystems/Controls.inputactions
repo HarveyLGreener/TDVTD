@@ -33,6 +33,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Active",
+                    "type": "Button",
+                    "id": "9a4368a4-175e-4ad7-a408-191efac37f03",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Parry",
                     "type": "Button",
                     "id": "7890e788-d091-4e92-a2ba-6904f80a22ee",
@@ -346,6 +355,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Parry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5eed56a-19bf-482e-94e7-af1f10665bb5",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Active",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
