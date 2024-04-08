@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public bool hit = false;
     public bool iFrames = false;
     public SpriteRenderer playerDashSprite;
+    public GameObject winText;
 
 
     // Start is called before the first frame update
@@ -103,7 +104,11 @@ public class PlayerMovement : MonoBehaviour
         if (hp <= 0)
         {
             anim.Play("Dead");
-            playerAttack.GetComponent<SpriteRenderer>().enabled = false;
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            winText.active = true;
             this.enabled = false;
         }
     }
