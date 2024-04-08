@@ -27,7 +27,7 @@ public class SmokeScreen : MonoBehaviour
                     rb.AddForce(Vector3.left * pushForce, ForceMode2D.Impulse);
                 }
 
-                StartCoroutine(RattlesDisableMove());
+                //StartCoroutine(RattlesDisableMove());
             }
         }
     }

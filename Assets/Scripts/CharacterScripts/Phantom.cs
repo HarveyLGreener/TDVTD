@@ -14,11 +14,11 @@ public class Phantom : MonoBehaviour
     {
         if(!activeCountdown && phantom.activeAbility)
         {
+            CircleCollider2D colliderOfWeapon = smokeScreen.AddComponent<CircleCollider2D>();
+            colliderOfWeapon.radius = 1f;
+            colliderOfWeapon.isTrigger = true;
             smokeScreen.SetActive(true);
-            if(!activeCountdown)
-            {
-                StartCoroutine(SmokeScreenActive());
-            }
+            StartCoroutine(SmokeScreenActive());
         }
     }
 
