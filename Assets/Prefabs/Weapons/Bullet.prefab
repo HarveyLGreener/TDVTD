@@ -90,7 +90,7 @@ MonoBehaviour:
   player: {fileID: 0}
   dmg: 0
   direction: 0
-  destroy: 0
+  destroy: 1
 --- !u!114 &5945799885877974081
 MonoBehaviour:
   m_ObjectHideFlags: 0

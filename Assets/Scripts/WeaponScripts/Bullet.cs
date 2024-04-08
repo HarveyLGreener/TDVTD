@@ -8,11 +8,11 @@ public class Bullet : MonoBehaviour
     public GameObject player;
     public int dmg;
     public float direction;
-    public bool destroy = false;
+    public bool destroy = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(DestroyBullet());
     }
 
     // Update is called once per frame
@@ -23,10 +23,6 @@ public class Bullet : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (destroy)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +32,9 @@ public class Bullet : MonoBehaviour
         {
             if (!objectHit.GetComponent<PlayerMovement>().iFrames && !objectHit.GetComponent<PlayerMovement>().isParrying)
             {
+                destroy = false;
+                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                this.gameObject.GetComponent<Collider2D>().enabled = false;
                 objectHit.GetComponent<PlayerMovement>().hp -= dmg;
                 StartCoroutine(objectHit.GetComponent<PlayerMovement>().Damaged());
                 StartCoroutine(waitToDestroy(objectHit));
@@ -49,13 +48,23 @@ public class Bullet : MonoBehaviour
         }
         else if (objectHit.GetComponent<PlayerMovement>() == null && objectHit.GetComponent<Bullet>() == null)
         {
-            destroy = true;
+            if (destroy)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
     public IEnumerator waitToDestroy(GameObject collision)
     {
         yield return new WaitUntil(() => !collision.GetComponent<PlayerMovement>().iFrames);
-        destroy = true;
+        Destroy(this.gameObject);
+    }
+
+    public IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(1.5f);
+        yield return new WaitUntil(() => (this.gameObject.GetComponent<Bullet>().destroy));
+        Destroy(this.gameObject);
     }
 }
