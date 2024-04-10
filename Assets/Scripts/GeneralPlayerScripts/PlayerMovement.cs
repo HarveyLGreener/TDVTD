@@ -10,16 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public float FallSpeed = 20f;
     public float OriginalFallSpeed = 20f;
     public Rigidbody2D rb;
-    [SerializeField] private bool canDash=true;
-    [SerializeField] private float horizontalDash=15f;
-    [SerializeField] private float verticalDash=15f;
-    [SerializeField] private bool dashOnCooldown=false;
+    [SerializeField] public bool canDash=true;
+    [SerializeField] public float horizontalDash=15f;
+    [SerializeField] public float verticalDash=15f;
+    [SerializeField] public bool dashOnCooldown=false;
     [SerializeField] private bool cupheadDash = false;
     [SerializeField] private float dashTime = 0.25f;
     [SerializeField] private bool canJump = true;
     [SerializeField] public int hp = 3;
     public GameObject playerAttack;
-    private Vector2 inputMovement;
+    public Vector2 inputMovement;
     public bool dashed = false;
     public bool attacked = false;
     public Animator anim;
@@ -105,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    IEnumerator Dash()
+    public virtual IEnumerator Dash()
     {
         dashOnCooldown = true;
         playerDashSprite.color = Color.red;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rattles : PlayerMovement
+public class Rattles : MonoBehaviour
 {
     //[SerializeField] private GameObject crown;
     //[SerializeField] private float crownSpeed = 50f;
