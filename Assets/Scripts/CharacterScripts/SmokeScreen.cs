@@ -8,8 +8,29 @@ public class SmokeScreen : MonoBehaviour
     [SerializeField] private GameObject phantom;
     [SerializeField] private GameObject hitOpp;
     [SerializeField] private bool oppMovementDisabled = false;
+    public Rattles inSmoke;
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void Start()
+    {
+        
+    }
+    private void Update()
+    {
+        if (Mathf.Abs(inSmoke.gameObject.transform.position.x - this.gameObject.transform.position.x)<=3)
+        {
+
+            if (inSmoke.transform.position.x > phantom.transform.position.x)
+            {
+                inSmoke.GetComponent<Rigidbody2D>().AddForce(Vector3.right * pushForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                inSmoke.GetComponent<Rigidbody2D>().AddForce(Vector3.left * pushForce, ForceMode2D.Impulse);
+            }
+        }
+    }
+
+    /*void OnTriggerEnter2D(Collider2D col)
     {
         Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
         if (rb != null && rb != phantom.GetComponent<Rigidbody2D>())
@@ -27,7 +48,7 @@ public class SmokeScreen : MonoBehaviour
                     rb.AddForce(Vector3.left * pushForce, ForceMode2D.Impulse);
                 }
 
-                StartCoroutine(RattlesDisableMove());
+                //StartCoroutine(RattlesDisableMove());
             }
         }
     }
@@ -39,5 +60,5 @@ public class SmokeScreen : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         hitOpp.GetComponent<PlayerMovement>().enabled = true;
         oppMovementDisabled = false;
-    }
+    }*/
 }

@@ -27,6 +27,17 @@ public class PlayerMovement : MonoBehaviour
     public bool hit = false;
     public bool iFrames = false;
     public SpriteRenderer playerDashSprite;
+    public SpriteRenderer playerParry;
+    public SpriteRenderer passive;
+    public SpriteRenderer active;
+    public GameObject winText;
+    public bool parry = false;
+    public bool isParrying = false;
+    public AnimationClip parryClip;
+    public int parriesUsed = 0;
+    public bool activeAbility=false;
+    public GameObject guns;
+    public GameObject phantomDissolve;
 
 
     // Start is called before the first frame update
@@ -42,17 +53,36 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        dashed = context.action.triggered;
+            dashed = context.action.triggered;
+
+    }
+
+    public void OnParry(InputAction.CallbackContext context)
+    {
+            parry = context.action.triggered;
+    }
+
+    public void OnActive(InputAction.CallbackContext context)
+    {
+        activeAbility = context.action.triggered;
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
+        if (iFrames)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+        }
+        else
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        }
         if (canDash)
         {
             playerDashSprite.color = Color.white;
         }
-        if (!hit)
+        if (!hit & !isParrying)
         {
             if (currentAnim != anim.GetCurrentAnimatorStateInfo(0).shortNameHash)
             {
@@ -102,13 +132,23 @@ public class PlayerMovement : MonoBehaviour
         }
         if (hp <= 0)
         {
-            Destroy(this.gameObject);
+            anim.Play("Dead");
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            winText.active = true;
+            this.enabled = false;
+        }
+        if (parry && parriesUsed < 1 && !isParrying) 
+        {
+            StartCoroutine(Parry());
         }
     }
     public virtual IEnumerator Dash()
     {
         dashOnCooldown = true;
-        playerDashSprite.color = Color.red;
+        playerDashSprite.color = Color.grey;
         float inputX = inputMovement.x;
         float inputY = inputMovement.y;
         if (cupheadDash == false)
@@ -129,35 +169,44 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, verticalDash * -1);
             }
+            canDash = false;
+            yield return new WaitForSeconds(0.75f);
+            dashOnCooldown = false;
         }
         else if (cupheadDash == true)
         {
+            GameObject decoy = Instantiate(phantomDissolve, this.transform.position, Quaternion.identity);
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            guns.active = false;
+            iFrames = true;
             if (inputX > 0)
             {
-                rb.velocity = new Vector2(horizontalDash, 0);
-                FallSpeed = 0;
-                yield return new WaitForSeconds(dashTime);
-                FallSpeed = OriginalFallSpeed;
+                rb.velocity = new Vector2(horizontalDash, rb.velocity.y);
             }
             else if (inputX < 0)
             {
-                rb.velocity = new Vector2(horizontalDash * -1, 0);
-                FallSpeed = 0;
-                yield return new WaitForSeconds(dashTime);
-                FallSpeed = OriginalFallSpeed;
+                rb.velocity = new Vector2(horizontalDash * -1, rb.velocity.y);
             }
-            if (inputY > 0 && inputX > 0)
+            if (inputY > 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, verticalDash);
             }
-            else if (inputY < 0 && inputX > 0)
+            else if (inputY < 0)
             {
                 rb.velocity = new Vector2(rb.velocity.x, verticalDash * -1);
             }
+            canDash = false;
+            yield return new WaitForSeconds(0.3f);
+            iFrames = false;
+            this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            guns.active = true;
+            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.25f);
+            Destroy(decoy);
+            dashOnCooldown = false;
+
         }
-        canDash = false;
-        yield return new WaitForSeconds(0.75f);
-        dashOnCooldown = false;
+
     }
 
     public void changeCollider()
@@ -170,10 +219,24 @@ public class PlayerMovement : MonoBehaviour
     {
         iFrames = true;
         hit = true;
+        anim.Play("Hit", 0);
         Debug.Log("I was hit!");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         hit = false;
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.5f);
         iFrames = false;
+    }
+
+    public IEnumerator Parry()
+    {
+        isParrying = true;
+        parriesUsed = parriesUsed + 1;
+        anim.Play("Parry", 0);
+        yield return new WaitForSeconds(parryClip.length*2f);
+        if (parriesUsed >= 1)
+        {
+            playerParry.color = Color.red;
+        }
+        isParrying = false;
     }
 }

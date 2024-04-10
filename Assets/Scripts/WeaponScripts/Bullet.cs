@@ -8,11 +8,11 @@ public class Bullet : MonoBehaviour
     public GameObject player;
     public int dmg;
     public float direction;
-    public bool destroy = false;
+    public bool destroy = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(DestroyBullet());
     }
 
     // Update is called once per frame
@@ -23,31 +23,50 @@ public class Bullet : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (destroy)
-        {
-
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerMovement>() != null && collision.gameObject != player)
+        GameObject objectHit = collision.gameObject;
+        if (objectHit.GetComponent<PlayerMovement>() != null && objectHit != player)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            this.gameObject.GetComponent<Collider2D>().enabled = false;
-            if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
+            if (!objectHit.GetComponent<PlayerMovement>().iFrames && !objectHit.GetComponent<PlayerMovement>().isParrying && objectHit.GetComponent<PlayerMovement>().hp > 0)
             {
-                collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
-                StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());
-                if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames)
-                {
-                    Destroy(this.gameObject);
-                }
+                destroy = false;
+                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                this.gameObject.GetComponent<Collider2D>().enabled = false;
+                objectHit.GetComponent<PlayerMovement>().hp -= dmg;
+                StartCoroutine(objectHit.GetComponent<PlayerMovement>().Damaged());
+                StartCoroutine(waitToDestroy(objectHit));
+
+            }
+            else if (objectHit.GetComponent<PlayerMovement>().isParrying)
+            {
+                player = objectHit;
+                player.GetComponent<PlayerMovement>().parriesUsed++;
+                direction = direction * -1;
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }
-        else if (collision.gameObject.GetComponent<PlayerMovement>() == null && collision.gameObject.GetComponent<Bullet>() == null)
+        else if (objectHit.GetComponent<PlayerMovement>() == null && objectHit.GetComponent<Bullet>() == null)
         {
-            Destroy(this.gameObject);
+            if (destroy)
+            {
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    public IEnumerator waitToDestroy(GameObject collision)
+    {
+        yield return new WaitUntil(() => !collision.GetComponent<PlayerMovement>().iFrames);
+        Destroy(this.gameObject);
+    }
+
+    public IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(1.5f);
+        yield return new WaitUntil(() => (this.gameObject.GetComponent<Bullet>().destroy));
+        Destroy(this.gameObject);
     }
 }
