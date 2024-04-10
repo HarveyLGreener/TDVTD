@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rattles : MonoBehaviour
+public class Rattles : PlayerMovement
 {
     //[SerializeField] private GameObject crown;
     //[SerializeField] private float crownSpeed = 50f;
@@ -41,7 +41,6 @@ public class Rattles : MonoBehaviour
             StartCoroutine(CrownCooldown());
         }
         base.Update();
-
     }
 
     public IEnumerator CrownCooldown()
