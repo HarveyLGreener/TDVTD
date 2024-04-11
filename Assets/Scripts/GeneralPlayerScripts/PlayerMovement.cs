@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     public bool activeAbility=false;
     public GameObject guns;
     public GameObject phantomDissolve;
+    public bool jump = false;
+    public int parryVal = 0;
 
 
     // Start is called before the first frame update
@@ -53,18 +55,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-            dashed = context.action.triggered;
+        dashed = context.action.triggered;
 
     }
 
     public void OnParry(InputAction.CallbackContext context)
     {
-            parry = context.action.triggered;
+        parry = context.action.triggered;
+        Debug.Log(parryVal);
+        parryVal++;
+        Debug.Log(parryVal);
     }
 
     public void OnActive(InputAction.CallbackContext context)
     {
         activeAbility = context.action.triggered;
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jump = context.action.triggered;
     }
 
     // Update is called once per frame
@@ -111,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
                 canDash = true;
                 anim.SetBool("Falling", false);
             }
-            if (rb.velocity.y == 0 && inputY > 0 && canJump == true)
+            if (rb.velocity.y == 0 && jump && canJump == true)
             {
                 rb.AddForce(transform.up * 10, ForceMode2D.Impulse);
             }
@@ -123,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 anim.SetBool("Falling", true);
             }
-            if ((canDash == true) & (dashed == true))
+            if ((canDash == true) & (dashed))
             {
                 StartCoroutine(Dash());
                 anim.SetTrigger("Dashing");
@@ -207,6 +217,14 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
+    }
+
+    private void LateUpdate()
+    {
+        dashed = false;
+        parry = false;
+        jump = false;
+        parryVal = 0;
     }
 
     public void changeCollider()

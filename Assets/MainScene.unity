@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf96dec9eacaad4eba414c3c2bf6aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 3
+  pushForce: 0.5
   phantom: {fileID: 7103049647131701753}
   hitOpp: {fileID: 0}
   oppMovementDisabled: 0
@@ -968,6 +968,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a8ec69875d61224eb893a4b36b7d443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &285875095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285875091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf768f2702de5d24b978a7bb8fec7ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &329012156
@@ -3558,18 +3570,6 @@ MonoBehaviour:
     m_ActionId: 76a07cb2-437d-4bc6-8be0-72aa26a01140
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2e0ef863-0722-4ad1-9828-d3ca42898b92
-    m_ActionName: Player1/Movement[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 81d57ba4-4227-490b-bd74-aa8c70d053de
-    m_ActionName: Player1/Dash[/Keyboard/rightCtrl]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 76680dfa-8095-404d-b8c7-504a48475855
-    m_ActionName: Player1/Attack[/Keyboard/z]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1874098249}
         m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
@@ -3617,6 +3617,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9a4368a4-175e-4ad7-a408-191efac37f03
     m_ActionName: Player/Active[/DualSenseGamepadHID/rightTrigger,/DualSenseGamepadHID1/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1874098250}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c1923d2-16ac-4581-939a-968994be341e
+    m_ActionName: Player/Jump[/DualSenseGamepadHID/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller0
   m_DefaultActionMap: Player
@@ -3796,6 +3812,8 @@ MonoBehaviour:
   activeAbility: 0
   guns: {fileID: 0}
   phantomDissolve: {fileID: 0}
+  jump: 0
+  parryVal: 0
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -4228,6 +4246,8 @@ MonoBehaviour:
   guns: {fileID: 270524937}
   phantomDissolve: {fileID: 1184311229208367075, guid: baed1ea121d164d40a3059376468cc54,
     type: 3}
+  jump: 0
+  parryVal: 0
 --- !u!95 &4893170196723562450
 Animator:
   serializedVersion: 5
@@ -4386,7 +4406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7499997033446347284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4446,14 +4466,6 @@ MonoBehaviour:
     m_ActionId: 52821aab-15b9-4508-8dc0-628de9ef8bbd
     m_ActionName: Player/Dash[/Keyboard/leftShift]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2e0ef863-0722-4ad1-9828-d3ca42898b92
-    m_ActionName: Player1/Movement[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 81d57ba4-4227-490b-bd74-aa8c70d053de
-    m_ActionName: Player1/Dash[/Keyboard/rightCtrl]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7499997033446347285}
         m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
@@ -4469,10 +4481,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 76a07cb2-437d-4bc6-8be0-72aa26a01140
     m_ActionName: Player/Attack[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 76680dfa-8095-404d-b8c7-504a48475855
-    m_ActionName: Player1/Attack[/Keyboard/z]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7499997033446347285}
@@ -4521,6 +4529,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9a4368a4-175e-4ad7-a408-191efac37f03
     m_ActionName: Player/Active[/DualSenseGamepadHID/rightTrigger,/DualSenseGamepadHID1/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4431257822006067939}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9c1923d2-16ac-4581-939a-968994be341e
+    m_ActionName: Player/Jump[/DualSenseGamepadHID/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller1
   m_DefaultActionMap: Player

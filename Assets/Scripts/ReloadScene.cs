@@ -14,6 +14,6 @@ public class ReloadScene : MonoBehaviour
     public IEnumerator NextScene()
     {
         yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("MainScene 1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
