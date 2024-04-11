@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public bool dashed = false;
     public bool attacked = false;
     public Animator anim;
+    public Animator camAnim;
     public int currentAnim = 0;
     public bool hit = false;
     public bool iFrames = false;
@@ -221,6 +222,7 @@ public class PlayerMovement : MonoBehaviour
         hit = true;
         anim.Play("Hit", 0);
         Debug.Log("I was hit!");
+        camAnim.SetTrigger("DamageTaken");
         yield return new WaitForSeconds(0.25f);
         hit = false;
         yield return new WaitForSeconds(0.5f);
