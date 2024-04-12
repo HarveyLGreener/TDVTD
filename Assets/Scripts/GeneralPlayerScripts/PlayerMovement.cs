@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public bool activeAbility=false;
     public GameObject guns;
     public GameObject phantomDissolve;
+    [SerializeField] private float hitStunLength = 0.5f;
+    [SerializeField] private float iFramesLength = 1.0f;
 
 
     // Start is called before the first frame update
@@ -237,21 +239,17 @@ public class PlayerMovement : MonoBehaviour
         anim.Play("Hit", 0);
         Debug.Log("I was hit!");
         camAnim.SetTrigger("DamageTaken");
-        yield return new WaitForSeconds(0.5f);
-        Debug.Log("Hit False");
+        yield return new WaitForSeconds(hitStunLength);
         hit = false;
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("IFrames False");
+        yield return new WaitForSeconds(iFramesLength);
         iFrames = false;
         flashComplete = false;
     }
 
     public IEnumerator WaitForFlash()
     {
-        Debug.Log("Waiting For Flash");
         waitingForFlash = true;
         yield return new WaitForSeconds(0.333f);
-        Debug.Log("Flash Ended");
         flashComplete = true;
         waitingForFlash = false;
     }
