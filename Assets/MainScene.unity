@@ -1240,6 +1240,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1325,6 +1326,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &519420035
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 291c83961821e2d43910e7e4eee35518, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &530357331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3781,6 +3803,7 @@ MonoBehaviour:
   dashed: 0
   attacked: 0
   anim: {fileID: 1874098246}
+  camAnim: {fileID: 519420035}
   currentAnim: 0
   hit: 0
   iFrames: 0
@@ -4212,6 +4235,7 @@ MonoBehaviour:
   dashed: 0
   attacked: 0
   anim: {fileID: 4893170196723562450}
+  camAnim: {fileID: 519420035}
   currentAnim: 0
   hit: 0
   iFrames: 0
