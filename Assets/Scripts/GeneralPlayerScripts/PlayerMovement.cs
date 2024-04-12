@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputMovement;
     public bool dashed = false;
     public bool attacked = false;
+    public bool flashComplete = false;
+    public bool waitingForFlash = false;
     public Animator anim;
     public Animator camAnim;
     public int currentAnim = 0;
@@ -73,7 +75,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (iFrames)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+            if(!waitingForFlash && !flashComplete)
+            {
+                StartCoroutine(WaitForFlash());
+            }
+            else if(flashComplete)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+                Debug.Log("Sprite is grey");
+            }
+        }
+        else if(!flashComplete && iFrames)
+        {
+
         }
         else
         {
@@ -223,10 +237,23 @@ public class PlayerMovement : MonoBehaviour
         anim.Play("Hit", 0);
         Debug.Log("I was hit!");
         camAnim.SetTrigger("DamageTaken");
-        yield return new WaitForSeconds(0.25f);
-        hit = false;
         yield return new WaitForSeconds(0.5f);
+        Debug.Log("Hit False");
+        hit = false;
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log("IFrames False");
         iFrames = false;
+        flashComplete = false;
+    }
+
+    public IEnumerator WaitForFlash()
+    {
+        Debug.Log("Waiting For Flash");
+        waitingForFlash = true;
+        yield return new WaitForSeconds(0.333f);
+        Debug.Log("Flash Ended");
+        flashComplete = true;
+        waitingForFlash = false;
     }
 
     public IEnumerator Parry()
