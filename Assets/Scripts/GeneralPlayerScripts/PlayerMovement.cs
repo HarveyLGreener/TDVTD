@@ -84,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
             else if(flashComplete)
             {
                 this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
-                Debug.Log("Sprite is grey");
             }
         }
         else if(!flashComplete && iFrames)

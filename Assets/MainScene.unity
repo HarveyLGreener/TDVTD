@@ -299,10 +299,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf96dec9eacaad4eba414c3c2bf6aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 3
+  pushForce: 15
+  hit: 0
+  knockbackDist: {x: 5, y: 0, z: 0}
   phantom: {fileID: 7103049647131701753}
-  hitOpp: {fileID: 0}
+  shovingOpp: 0
   oppMovementDisabled: 0
+  targetPos: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   inSmoke: {fileID: 1874098250}
 --- !u!212 &23963690
 SpriteRenderer:
@@ -3802,6 +3806,8 @@ MonoBehaviour:
   playerAttack: {fileID: 1986491738}
   dashed: 0
   attacked: 0
+  flashComplete: 0
+  waitingForFlash: 0
   anim: {fileID: 1874098246}
   camAnim: {fileID: 519420035}
   currentAnim: 0
@@ -3819,6 +3825,8 @@ MonoBehaviour:
   activeAbility: 0
   guns: {fileID: 0}
   phantomDissolve: {fileID: 0}
+  hitStunLength: 0.5
+  iFramesLength: 1
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -4234,6 +4242,8 @@ MonoBehaviour:
   playerAttack: {fileID: 407348242362803660}
   dashed: 0
   attacked: 0
+  flashComplete: 0
+  waitingForFlash: 0
   anim: {fileID: 4893170196723562450}
   camAnim: {fileID: 519420035}
   currentAnim: 0
@@ -4252,6 +4262,8 @@ MonoBehaviour:
   guns: {fileID: 270524937}
   phantomDissolve: {fileID: 1184311229208367075, guid: baed1ea121d164d40a3059376468cc54,
     type: 3}
+  hitStunLength: 0.5
+  iFramesLength: 1
 --- !u!95 &4893170196723562450
 Animator:
   serializedVersion: 5

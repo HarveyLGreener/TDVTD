@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class SmokeScreen : MonoBehaviour
 {
-    [SerializeField] private float pushForce = 3f;
+    [SerializeField] private float pushForce = 30f;
+    [SerializeField] private bool hit = false;
+    [SerializeField] private Vector3 knockbackDist = new Vector3(5,0,0);
     [SerializeField] private GameObject phantom;
-    [SerializeField] private GameObject hitOpp;
+    [SerializeField] private bool shovingOpp;
     [SerializeField] private bool oppMovementDisabled = false;
+    [SerializeField] private Vector3 targetPos;
+    [SerializeField] private Vector3 velocity;
     public Rattles inSmoke;
 
     private void Start()
@@ -18,16 +22,53 @@ public class SmokeScreen : MonoBehaviour
     {
         if (Mathf.Abs(inSmoke.gameObject.transform.position.x - this.gameObject.transform.position.x)<=3)
         {
-
-            if (inSmoke.transform.position.x > phantom.transform.position.x)
+            //if (inSmoke.transform.position.x > phantom.transform.position.x)
+            // {
+            if (!hit)
             {
-                inSmoke.GetComponent<Rigidbody2D>().AddForce(Vector3.right * pushForce, ForceMode2D.Impulse);
+                if(inSmoke.transform.position.x > phantom.transform.position.x)
+                {
+                    Knockback(inSmoke.gameObject.transform.position, 1.0f);
+                }
+                else
+                {
+                    Knockback(inSmoke.gameObject.transform.position, -1.0f);
+                }
+                SetHit(true);
+                SetShovingOpp(true);
+                Debug.Log("Set knockback values");
             }
-            else
+                //inSmoke.GetComponent<Rigidbody2D>().AddForce(Vector3.right * pushForce, ForceMode2D.Impulse);
+                //Debug.Log("Pushing");
+                //SetPushForce(0.0f);
+           // }
+/*            else
             {
                 inSmoke.GetComponent<Rigidbody2D>().AddForce(Vector3.left * pushForce, ForceMode2D.Impulse);
-            }
+            }*/
         }
+
+        if(shovingOpp)
+        {
+            inSmoke.gameObject.transform.position += velocity * Time.deltaTime;
+            velocity = Vector3.Lerp(velocity, (targetPos - transform.position).normalized * pushForce, Time.deltaTime * 5f);
+        }
+    }
+
+    public void SetHit(bool hit)
+    {
+        this.hit = hit;
+    }
+
+    public void SetShovingOpp(bool shovingOpp)
+    {
+        this.shovingOpp = shovingOpp;
+    }
+
+    public void Knockback(Vector3 target, float direction)
+    {
+        targetPos = target + (knockbackDist * direction);
+        velocity = ((target + knockbackDist) - transform.position).normalized * pushForce * direction;
     }
 
     /*void OnTriggerEnter2D(Collider2D col)
