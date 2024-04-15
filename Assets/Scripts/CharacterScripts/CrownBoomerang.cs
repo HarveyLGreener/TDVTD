@@ -66,7 +66,7 @@ public class CrownBoomerang : Weapon
         {
             base.OnTriggerEnter2D(col);
 
-            if (col.GetComponent<PlayerMovement>().iFrames)
+            if (col.GetComponent<PlayerMovement>() != null && col.GetComponent<PlayerMovement>().iFrames)
             {
                 oppHit = col.gameObject;
                 isDamagingOpp = true;

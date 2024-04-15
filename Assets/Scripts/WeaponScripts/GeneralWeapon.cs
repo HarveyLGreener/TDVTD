@@ -19,6 +19,7 @@ public class GeneralWeapon : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         attacked = context.action.triggered;
+        Debug.Log(attacked);
     }
 
     // Update is called once per frame
