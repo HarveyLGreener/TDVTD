@@ -35,6 +35,8 @@ public class Phantom : MonoBehaviour
         Destroy(collider);
         yield return new WaitForSeconds(3.0f);
         activeRender.color = Color.white;
+        smokeScreen.GetComponent<SmokeScreen>().SetHit(false);
+        smokeScreen.GetComponent<SmokeScreen>().SetShovingOpp(false);
         activeCountdown = false;
     }
 }

@@ -22,7 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputMovement;
     public bool dashed = false;
     public bool attacked = false;
+    public bool flashComplete = false;
+    public bool waitingForFlash = false;
     public Animator anim;
+    public Animator camAnim;
     public int currentAnim = 0;
     public bool hit = false;
     public bool iFrames = false;
@@ -38,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public bool activeAbility=false;
     public GameObject guns;
     public GameObject phantomDissolve;
+    [SerializeField] private float hitStunLength = 0.5f;
+    [SerializeField] private float iFramesLength = 1.0f;
 
 
     // Start is called before the first frame update
@@ -72,7 +77,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (iFrames)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+            if(!waitingForFlash && !flashComplete)
+            {
+                StartCoroutine(WaitForFlash());
+            }
+            else if(flashComplete)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
+            }
+        }
+        else if(!flashComplete && iFrames)
+        {
+
         }
         else
         {
@@ -221,10 +237,20 @@ public class PlayerMovement : MonoBehaviour
         hit = true;
         anim.Play("Hit", 0);
         Debug.Log("I was hit!");
-        yield return new WaitForSeconds(0.25f);
+        camAnim.SetTrigger("DamageTaken");
+        yield return new WaitForSeconds(hitStunLength);
         hit = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(iFramesLength);
         iFrames = false;
+        flashComplete = false;
+    }
+
+    public IEnumerator WaitForFlash()
+    {
+        waitingForFlash = true;
+        yield return new WaitForSeconds(0.333f);
+        flashComplete = true;
+        waitingForFlash = false;
     }
 
     public IEnumerator Parry()
