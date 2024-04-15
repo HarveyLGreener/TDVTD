@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject phantomDissolve;
     [SerializeField] private float hitStunLength = 0.5f;
     [SerializeField] private float iFramesLength = 1.0f;
+    public bool jump = false;
 
 
     // Start is called before the first frame update
@@ -70,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
     public void OnActive(InputAction.CallbackContext context)
     {
         activeAbility = context.action.triggered;
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jump = context.action.triggered;
     }
 
     // Update is called once per frame
@@ -127,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
                 canDash = true;
                 anim.SetBool("Falling", false);
             }
-            if (rb.velocity.y == 0 && inputY > 0 && canJump == true)
+            if (rb.velocity.y == 0 && jump && canJump == true)
             {
                 rb.AddForce(transform.up * 10, ForceMode2D.Impulse);
             }
