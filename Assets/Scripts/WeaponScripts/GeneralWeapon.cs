@@ -58,16 +58,16 @@ public class GeneralWeapon : MonoBehaviour
                 {
                     scaleFactor = -1f;
                 }
-                if (isSword)
+                /*if (isSword)
                 {
                     this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
                 }
                 else
-                {
+                {*/
                     this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
-                    weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
-                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
-                }
+                    //weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f*scaleFactor));
+                //}
             }
         }
     }
