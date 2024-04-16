@@ -1756,9 +1756,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568724569}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.35, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.009999991, y: -0.35000002, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1986491742}
@@ -3827,6 +3827,8 @@ MonoBehaviour:
   - {fileID: 1986491738}
   colliderOfWeapon: {fileID: 0}
   playerDirection: {x: 0, y: 0}
+  playerInitialDirection: 0
+  playerNewDirection: 0
 --- !u!114 &1874098250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4514,6 +4516,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7499997033446347285}
+        m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
+        m_MethodName: MoveDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 91bc0089-0bbe-4b60-9ee9-ec92813b18df
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -4664,6 +4678,8 @@ MonoBehaviour:
   - {fileID: 530357331}
   colliderOfWeapon: {fileID: 0}
   playerDirection: {x: 0, y: 0}
+  playerInitialDirection: 0
+  playerNewDirection: 0
 --- !u!61 &7499997033446347287
 BoxCollider2D:
   m_ObjectHideFlags: 0

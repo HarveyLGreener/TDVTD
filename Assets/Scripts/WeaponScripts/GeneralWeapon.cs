@@ -73,18 +73,24 @@ public class GeneralWeapon : MonoBehaviour
                 {
                     scaleFactor = -1f;
                 }
-                if (isSword)
-                {
+                //if (isSword)
+                //{
+                    if (weaponAnchor.transform.lossyScale.x != this.gameObject.transform.lossyScale.x)
+                    {
+                        weaponAnchor.transform.parent = null;
+                        this.gameObject.transform.localScale = new Vector3(weaponAnchor.transform.lossyScale.x, 1f, 1f);
+                        weaponAnchor.transform.parent = this.gameObject.transform;
+                    }
                     this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
                     //weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
                     weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
-                }
-                else
+                //}
+                /*else
                 {
                     this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
                     weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
                     weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f*scaleFactor));
-                }
+                }*/
             }
             else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking && playerDirection != Vector2.zero)
             {
@@ -96,13 +102,18 @@ public class GeneralWeapon : MonoBehaviour
                 {
                     scaleFactor = -1f;
                 }
-                if (isSword)
-                {
-                    weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                //if (isSword)
+                //{
+                    if (weaponAnchor.transform.lossyScale.x != scaleFactor)
+                    {
+                        weaponAnchor.transform.parent = null;
+                        weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                        weaponAnchor.transform.parent = this.gameObject.transform;
+                    }
                     weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
-                }
+                //}
             }
-            else if (playerDirection != Vector2.zero)
+            else if (playerDirection != Vector2.zero && weaponAim == Vector2.zero)
             {
                 weaponAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
                 weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, 0f);
