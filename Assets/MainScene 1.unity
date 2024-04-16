@@ -3879,6 +3879,7 @@ MonoBehaviour:
   hitStunLength: 0.5
   iFramesLength: 1
   jump: 0
+  timeChange: 0
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -4317,6 +4318,7 @@ MonoBehaviour:
   hitStunLength: 0.5
   iFramesLength: 1
   jump: 0
+  timeChange: 0
 --- !u!95 &4893170196723562450
 Animator:
   serializedVersion: 5

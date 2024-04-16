@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float hitStunLength = 0.5f;
     [SerializeField] private float iFramesLength = 1.0f;
     public bool jump = false;
+    public float timeChange;
 
 
     // Start is called before the first frame update
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        timeChange = Time.deltaTime;
         if (iFrames)
         {
             if(!waitingForFlash && !flashComplete)
@@ -174,6 +176,14 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Parry());
         }
+        if (iFrames && !hit)
+        {
+            iFramesLength -= Time.deltaTime;
+            if (iFramesLength <= 0f)
+            {
+                iFrames = false;
+            }
+        }
     }
     IEnumerator Dash()
     {
@@ -250,12 +260,10 @@ public class PlayerMovement : MonoBehaviour
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
-        Debug.Log("I was hit!");
         camAnim.SetTrigger("DamageTaken");
         yield return new WaitForSeconds(hitStunLength);
         hit = false;
         yield return new WaitForSeconds(iFramesLength);
-        iFrames = false;
         flashComplete = false;
     }
 
@@ -278,5 +286,15 @@ public class PlayerMovement : MonoBehaviour
             playerParry.color = Color.red;
         }
         isParrying = false;
+    }
+
+    public void iFrameTimer(float iFramesLength)
+    {
+        Debug.Log(iFramesLength);
+        bool running = true;
+        while (running)
+        {
+
+        }
     }
 }
