@@ -3553,6 +3553,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1874098249}
+        m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
+        m_MethodName: MoveDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 91bc0089-0bbe-4b60-9ee9-ec92813b18df
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -3814,6 +3826,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 1986491738}
   colliderOfWeapon: {fileID: 0}
+  playerDirection: {x: 0, y: 0}
 --- !u!114 &1874098250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4650,6 +4663,7 @@ MonoBehaviour:
   - {fileID: 407348242362803660}
   - {fileID: 530357331}
   colliderOfWeapon: {fileID: 0}
+  playerDirection: {x: 0, y: 0}
 --- !u!61 &7499997033446347287
 BoxCollider2D:
   m_ObjectHideFlags: 0

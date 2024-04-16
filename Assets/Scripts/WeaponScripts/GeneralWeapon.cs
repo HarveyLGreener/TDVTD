@@ -12,6 +12,9 @@ public class GeneralWeapon : MonoBehaviour
     private bool attacked = false;
     public GameObject[] weapons;
     public BoxCollider2D colliderOfWeapon;
+    public Vector2 playerDirection;
+    public float playerInitialDirection;
+    public float playerNewDirection;
     public void OnAim(InputAction.CallbackContext context)
     {
         weaponAim = context.ReadValue<Vector2>(); 
@@ -22,9 +25,18 @@ public class GeneralWeapon : MonoBehaviour
         Debug.Log(attacked);
     }
 
+    public void MoveDirection(InputAction.CallbackContext context)
+    {
+        playerDirection = context.ReadValue<Vector2>();
+    }
+    private void Start()
+    {
+        playerInitialDirection = this.gameObject.transform.localScale.x;
+    }
     // Update is called once per frame
     void Update()
     {
+        playerNewDirection = this.gameObject.transform.localScale.x;
         float inputX = weaponAim.x;
         float inputY = weaponAim.y;
         if (!this.gameObject.GetComponent<PlayerMovement>().hit)
@@ -51,7 +63,7 @@ public class GeneralWeapon : MonoBehaviour
                     }
                 }
             }
-            else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking)
+            else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking && playerDirection == Vector2.zero)
             {
                 if (inputX > 0)
                 {
@@ -74,7 +86,29 @@ public class GeneralWeapon : MonoBehaviour
                     weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f*scaleFactor));
                 }
             }
+            else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking && playerDirection != Vector2.zero)
+            {
+                if (inputX > 0)
+                {
+                    scaleFactor = 1f;
+                }
+                else if (inputX < 0)
+                {
+                    scaleFactor = -1f;
+                }
+                if (isSword)
+                {
+                    weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
+                }
+            }
+            else if (playerDirection != Vector2.zero)
+            {
+                weaponAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
+                weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            }
         }
+        playerInitialDirection = playerNewDirection;
     }
     private void LateUpdate()
     {
