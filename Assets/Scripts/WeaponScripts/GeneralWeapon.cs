@@ -35,12 +35,15 @@ public class GeneralWeapon : MonoBehaviour
                 {
                     if (isSword)
                     {
-                        colliderOfWeapon = weapon.AddComponent<BoxCollider2D>();
-                        colliderOfWeapon.offset = new Vector2(0.05f, 0.28f);
-                        colliderOfWeapon.size = new Vector2(0.85f, 2.0f);
-                        colliderOfWeapon.isTrigger = true;
-                        colliderOfWeapon.enabled = false;
-                        StartCoroutine(weapon.GetComponent<Sword>().Attack());
+                        if (!weapon.GetComponent<Sword>().isAttacking)
+                        {
+                            colliderOfWeapon = weapon.AddComponent<BoxCollider2D>();
+                            colliderOfWeapon.offset = new Vector2(0.05f, 0.2f);
+                            colliderOfWeapon.size = new Vector2(2.25f, 5.5f);
+                            colliderOfWeapon.isTrigger = true;
+                            colliderOfWeapon.enabled = false;
+                            StartCoroutine(weapon.GetComponent<Sword>().Attack());
+                        }
                     }
                     else
                     {
@@ -58,16 +61,18 @@ public class GeneralWeapon : MonoBehaviour
                 {
                     scaleFactor = -1f;
                 }
-                /*if (isSword)
+                if (isSword)
                 {
                     this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
+                    //weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
                 }
                 else
-                {*/
+                {
                     this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
-                    //weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                    weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
                     weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f*scaleFactor));
-                //}
+                }
             }
         }
     }

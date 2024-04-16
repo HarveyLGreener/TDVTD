@@ -123,6 +123,14 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Running", false);
 
             }
+            if (inputX < 0)
+            {
+                this.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if (inputX > 0)
+            {
+                this.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
             transform.position += transform.right * inputX * MoveSpeed * Time.deltaTime;
 
 
