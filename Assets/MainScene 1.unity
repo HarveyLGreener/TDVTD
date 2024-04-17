@@ -1407,6 +1407,7 @@ MonoBehaviour:
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
+  initialAttackCooldown: 0
 --- !u!212 &530357335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4180,6 +4181,7 @@ MonoBehaviour:
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
+  initialAttackCooldown: 0
 --- !u!1 &407348242362803660
 GameObject:
   m_ObjectHideFlags: 0
