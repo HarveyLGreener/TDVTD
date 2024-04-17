@@ -43,14 +43,20 @@ public class PlayerMovement : MonoBehaviour
     public GameObject phantomDissolve;
     [SerializeField] private float hitStunLength = 0.5f;
     [SerializeField] private float iFramesLength = 1.0f;
+    private float initialHitStunLength;
+    private float initialIFramesLength;
     public bool jump = false;
     public float timeChange;
 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        initialHitStunLength = hitStunLength;
+        initialIFramesLength = iFramesLength;
+        Debug.Log(initialHitStunLength);
+        Debug.Log(initialIFramesLength);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -82,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        timeChange = Time.deltaTime;
         if (iFrames)
         {
             if(!waitingForFlash && !flashComplete)
@@ -182,7 +187,22 @@ public class PlayerMovement : MonoBehaviour
             if (iFramesLength <= 0f)
             {
                 iFrames = false;
+                iFramesLength = initialIFramesLength;
+                Debug.Log(iFramesLength);
             }
+        }
+        else if (iFrames && hit)
+        {
+            hitStunLength -= Time.deltaTime;
+            if (hitStunLength <=0)
+            {
+                hit = false;
+                hitStunLength = initialHitStunLength;
+            }
+        }
+        else
+        {
+            flashComplete = false;
         }
     }
     IEnumerator Dash()
@@ -255,16 +275,12 @@ public class PlayerMovement : MonoBehaviour
         gameObject.AddComponent<PolygonCollider2D>();
     }
 
-    public IEnumerator Damaged()
+    public void Damaged()
     {
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
         camAnim.SetTrigger("DamageTaken");
-        yield return new WaitForSeconds(hitStunLength);
-        hit = false;
-        yield return new WaitForSeconds(iFramesLength);
-        flashComplete = false;
     }
 
     public IEnumerator WaitForFlash()

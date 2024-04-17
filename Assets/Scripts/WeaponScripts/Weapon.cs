@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
             if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames && !collision.gameObject.GetComponent<PlayerMovement>().isParrying && collision.gameObject.GetComponent<PlayerMovement>().hp>0)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
-                StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());
+                collision.gameObject.GetComponent<PlayerMovement>().Damaged();
             }
             else if (collision.gameObject.GetComponent<PlayerMovement>().isParrying)
             {
@@ -52,12 +52,31 @@ public class Weapon : MonoBehaviour
 
     public IEnumerator parryStunned()
     {
-        this.transform.parent.gameObject.GetComponent<PlayerMovement>().anim.Play("Stunned", 0);
-        this.transform.parent.gameObject.GetComponent<PlayerMovement>().enabled = false;
-        this.transform.parent.gameObject.GetComponent<GeneralWeapon>().enabled = false;
+        Debug.Log("Started Coroutine");
+        Debug.Log(this.transform.parent.parent.gameObject.name);
+        this.transform.parent.parent.gameObject.GetComponent<PlayerMovement>().anim.Play("Stunned", 0);
+        Debug.Log("Found parent and anim");
+        this.transform.parent.parent.gameObject.GetComponent<PlayerMovement>().enabled = false;
+        this.transform.parent.parent.gameObject.GetComponent<GeneralWeapon>().enabled = false;
+        Debug.Log("Disabled Stuff");
         yield return new WaitForSeconds(1.0f);
-        this.transform.parent.gameObject.GetComponent<PlayerMovement>().enabled = true;
-        this.transform.parent.gameObject.GetComponent<GeneralWeapon>().enabled = true;
+        this.transform.parent.parent.gameObject.GetComponent<PlayerMovement>().enabled = true;
+        this.transform.parent.parent.gameObject.GetComponent<GeneralWeapon>().enabled = true;
+        Debug.Log("Made it to end");
     }
 
+    public IEnumerator parryStunned(GameObject parent)
+    {
+        Debug.Log("Started Coroutine");
+        Debug.Log(this.transform.parent.parent.gameObject.name);
+        parent.GetComponent<PlayerMovement>().anim.Play("Stunned", 0);
+        Debug.Log("Found parent and anim");
+        parent.GetComponent<PlayerMovement>().enabled = false;
+        parent.GetComponent<GeneralWeapon>().enabled = false;
+        Debug.Log("Disabled Stuff");
+        yield return new WaitForSeconds(1.0f);
+        parent.GetComponent<PlayerMovement>().enabled = true;
+        parent.GetComponent<GeneralWeapon>().enabled = true;
+        Debug.Log("Made it to end");
+    }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CrownBoomerang : Weapon
 {
     [SerializeField] private float speed;
+    public GameObject Rattles;
 
     //private Transform spriteTransform;
     public Vector3 targetPos;
@@ -20,6 +21,7 @@ public class CrownBoomerang : Weapon
     private void Start()
     {
         //spriteTransform = transform.GetChild(0);
+        Rattles = GameObject.FindObjectOfType<Rattles>().gameObject;
     }
 
     private void Update()

@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
                 this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 this.gameObject.GetComponent<Collider2D>().enabled = false;
                 objectHit.GetComponent<PlayerMovement>().hp -= dmg;
-                StartCoroutine(objectHit.GetComponent<PlayerMovement>().Damaged());
+                objectHit.GetComponent<PlayerMovement>().Damaged();
                 StartCoroutine(waitToDestroy(objectHit));
 
             }

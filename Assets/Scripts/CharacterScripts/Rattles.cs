@@ -15,8 +15,9 @@ public class Rattles : PlayerMovement
     private Vector3 targetPos;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         holdingBoomerang = true;
     }
 
