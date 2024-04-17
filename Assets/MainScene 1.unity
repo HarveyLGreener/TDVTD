@@ -3913,13 +3913,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 10
-  JumpSpeed: 20
+  JumpSpeed: 13
   FallSpeed: 20
   OriginalFallSpeed: 20
   rb: {fileID: 1874098240}
   canDash: 1
   horizontalDash: 8
-  verticalDash: 10
+  verticalDash: 15
   dashOnCooldown: 0
   cupheadDash: 0
   dashTime: 0.25
@@ -4353,13 +4353,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 10
-  JumpSpeed: 20
+  JumpSpeed: 12
   FallSpeed: 20
   OriginalFallSpeed: 20
   rb: {fileID: 4185574772181952534}
   canDash: 1
   horizontalDash: 8
-  verticalDash: 10
+  verticalDash: 15
   dashOnCooldown: 0
   cupheadDash: 1
   dashTime: 0.25

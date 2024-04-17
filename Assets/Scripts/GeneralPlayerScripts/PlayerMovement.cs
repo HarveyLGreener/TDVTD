@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (rb.velocity.y == 0 && jump && canJump == true)
             {
-                rb.AddForce(transform.up * 10, ForceMode2D.Impulse);
+                rb.AddForce(transform.up * JumpSpeed, ForceMode2D.Impulse);
             }
             if (rb.velocity.y < -20f)
             {
