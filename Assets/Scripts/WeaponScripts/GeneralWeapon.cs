@@ -43,6 +43,7 @@ public class GeneralWeapon : MonoBehaviour
         {
             if (attacked)
             {
+                attacked = false;
                 foreach (GameObject weapon in weapons)
                 {
                     if (isSword)
@@ -123,6 +124,5 @@ public class GeneralWeapon : MonoBehaviour
     }
     private void LateUpdate()
     {
-        attacked = false;
     }
 }

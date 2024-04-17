@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
             anim.SetTrigger("Attack");
             yield return new WaitForSeconds(0.33f);
             Destroy(this.gameObject.GetComponent<Collider2D>());
-            yield return new WaitForSeconds(attackTime);
+            //yield return new WaitForSeconds(attackTime);
             isAttacking = false;
         }
     }
