@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public bool jump = false;
     public float timeChange;
     public Vector2 aim = Vector2.zero;
+    public ScoreTracker scoreTracker;
 
 
     // Start is called before the first frame update
@@ -56,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         initialHitStunLength = hitStunLength;
         initialIFramesLength = iFramesLength;
-        Debug.Log(initialHitStunLength);
-        Debug.Log(initialIFramesLength);
+        scoreTracker = FindObjectOfType<ScoreTracker>();
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -175,6 +176,14 @@ public class PlayerMovement : MonoBehaviour
         }
         if (hp <= 0)
         {
+            if (this.gameObject.GetComponent<Rattles>() != null)
+            {
+                scoreTracker.PhantomPoint();
+            }
+            else
+            {
+                scoreTracker.RattlesPoint();
+            }
             anim.Play("Dead");
             foreach (Transform child in transform)
             {
