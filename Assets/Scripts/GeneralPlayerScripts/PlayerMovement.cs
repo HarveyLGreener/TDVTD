@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private float initialIFramesLength;
     public bool jump = false;
     public float timeChange;
+    public Vector2 aim = Vector2.zero;
 
 
     // Start is called before the first frame update
@@ -83,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         jump = context.action.triggered;
+    }
+
+    public void Aiming(InputAction.CallbackContext context)
+    {
+        aim = context.ReadValue<Vector2>();
     }
 
     // Update is called once per frame
@@ -130,11 +136,11 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Running", false);
 
             }
-            if (inputX < 0)
+            if (inputX < 0 && aim == Vector2.zero)
             {
                 this.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
-            else if (inputX > 0)
+            else if (inputX > 0 && aim == Vector2.zero)
             {
                 this.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             }

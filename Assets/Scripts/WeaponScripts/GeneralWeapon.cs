@@ -105,6 +105,7 @@ public class GeneralWeapon : MonoBehaviour
                 }
                 //if (isSword)
                 //{
+                this.gameObject.transform.localScale = new Vector3(scaleFactor, 1f, 1f);
                     if (weaponAnchor.transform.lossyScale.x != scaleFactor)
                     {
                         weaponAnchor.transform.parent = null;

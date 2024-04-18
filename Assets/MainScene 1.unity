@@ -3684,6 +3684,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1874098250}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Aiming
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 936f3120-bfc0-4068-b699-73444f4b23a2
     m_ActionName: Player/WeaponMove[/DualSenseGamepadHID/rightStick/up,/DualSenseGamepadHID1/rightStick/up,/DualSenseGamepadHID/rightStick/down,/DualSenseGamepadHID1/rightStick/down,/DualSenseGamepadHID/rightStick/left,/DualSenseGamepadHID1/rightStick/left,/DualSenseGamepadHID/rightStick/right,/DualSenseGamepadHID1/rightStick/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -3951,6 +3963,7 @@ MonoBehaviour:
   iFramesLength: 1
   jump: 0
   timeChange: 0
+  aim: {x: 0, y: 0}
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -4392,6 +4405,7 @@ MonoBehaviour:
   iFramesLength: 1
   jump: 0
   timeChange: 0
+  aim: {x: 0, y: 0}
 --- !u!95 &4893170196723562450
 Animator:
   serializedVersion: 5
@@ -4642,6 +4656,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7499997033446347285}
         m_TargetAssemblyTypeName: GeneralWeapon, Assembly-CSharp
         m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4431257822006067939}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Aiming
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
