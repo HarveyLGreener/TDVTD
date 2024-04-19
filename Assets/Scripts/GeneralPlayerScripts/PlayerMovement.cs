@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     public float timeChange;
     public Vector2 aim = Vector2.zero;
     public ScoreTracker scoreTracker;
+    public GameObject hitParticle;
 
 
     // Start is called before the first frame update
@@ -292,6 +293,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
+        //GameObject particle = Instantiate(hitParticle, this.gameObject.transform);
+        //Destroy(particle, 0.33f);
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);

@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float attackTime = 1f;
     [SerializeField] public bool isAttacking = false;
     public Animator anim;
+    public GameObject hitParticle;
 
     protected virtual void OnEnable()
     {
@@ -41,11 +42,14 @@ public class Weapon : MonoBehaviour
             {
                 collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
                 collision.gameObject.GetComponent<PlayerMovement>().Damaged();
+                GameObject particle = Instantiate(hitParticle);
+                particle.transform.position = this.transform.position;
+                Destroy(particle, 0.33f);
             }
             else if (collision.gameObject.GetComponent<PlayerMovement>().isParrying)
             {
                 Debug.Log("Parried!");
-                StartCoroutine(parryStunned());
+                StartCoroutine(parryStunned()); GameObject particle = Instantiate(hitParticle);
             }
         }
     }

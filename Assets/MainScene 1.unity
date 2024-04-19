@@ -1269,6 +1269,7 @@ MonoBehaviour:
   attackTime: 1
   isAttacking: 0
   anim: {fileID: 530357333}
+  hitParticle: {fileID: 0}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
@@ -3988,6 +3989,8 @@ MonoBehaviour:
   timeChange: 0
   aim: {x: 0, y: 0}
   scoreTracker: {fileID: 849370826}
+  hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
+    type: 3}
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -4100,6 +4103,8 @@ MonoBehaviour:
   attackTime: 0.4
   isAttacking: 0
   anim: {fileID: 1986491744}
+  hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
+    type: 3}
 --- !u!95 &1986491744
 Animator:
   serializedVersion: 5
@@ -4549,6 +4554,7 @@ MonoBehaviour:
   attackTime: 1
   isAttacking: 0
   anim: {fileID: 2638571952269329513}
+  hitParticle: {fileID: 0}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
@@ -4695,6 +4701,8 @@ MonoBehaviour:
   timeChange: 0
   aim: {x: 0, y: 0}
   scoreTracker: {fileID: 849370826}
+  hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
+    type: 3}
 --- !u!95 &4893170196723562450
 Animator:
   serializedVersion: 5

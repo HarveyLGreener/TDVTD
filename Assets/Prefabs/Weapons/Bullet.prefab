@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8934341570175903516}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
@@ -91,6 +91,8 @@ MonoBehaviour:
   dmg: 0
   direction: 0
   destroy: 1
+  hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
+    type: 3}
 --- !u!114 &5945799885877974081
 MonoBehaviour:
   m_ObjectHideFlags: 0

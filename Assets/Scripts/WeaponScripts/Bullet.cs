@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public int dmg;
     public float direction;
     public bool destroy = true;
+    public GameObject hitParticle;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,9 @@ public class Bullet : MonoBehaviour
                 objectHit.GetComponent<PlayerMovement>().hp -= dmg;
                 objectHit.GetComponent<PlayerMovement>().Damaged();
                 StartCoroutine(waitToDestroy(objectHit));
+                GameObject particle = Instantiate(hitParticle);
+                particle.transform.position = this.gameObject.transform.position;
+                Destroy(particle, 0.33f);
 
             }
             else if (objectHit.GetComponent<PlayerMovement>().isParrying)
