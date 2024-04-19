@@ -537,7 +537,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 94509798f4e2585469e73f0dc54c130d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1270,6 +1270,7 @@ MonoBehaviour:
   isAttacking: 0
   anim: {fileID: 530357333}
   hitParticle: {fileID: 0}
+  particleSpawnPoint: {fileID: 0}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
@@ -3151,6 +3152,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1540750599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540750600}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1540750600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540750599}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1986491742}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1551421554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,7 +3831,7 @@ MonoBehaviour:
     m_ActionId: c0f2ca61-a889-4665-8038-162772125505
     m_ActionName: Player1/Jump[/DualSenseGamepadHID/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller0
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -3991,6 +4023,7 @@ MonoBehaviour:
   scoreTracker: {fileID: 849370826}
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}
+  playerInput: {fileID: 0}
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -4083,7 +4116,8 @@ Transform:
   m_LocalPosition: {x: 1.06, y: -0.08, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.46666676}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1540750600}
   m_Father: {fileID: 568724570}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.427}
@@ -4105,6 +4139,7 @@ MonoBehaviour:
   anim: {fileID: 1986491744}
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}
+  particleSpawnPoint: {fileID: 1540750600}
 --- !u!95 &1986491744
 Animator:
   serializedVersion: 5
@@ -4555,6 +4590,7 @@ MonoBehaviour:
   isAttacking: 0
   anim: {fileID: 2638571952269329513}
   hitParticle: {fileID: 0}
+  particleSpawnPoint: {fileID: 0}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
@@ -4703,6 +4739,7 @@ MonoBehaviour:
   scoreTracker: {fileID: 849370826}
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}
+  playerInput: {fileID: 0}
 --- !u!95 &4893170196723562450
 Animator:
   serializedVersion: 5
@@ -5053,7 +5090,7 @@ MonoBehaviour:
     m_ActionId: c0f2ca61-a889-4665-8038-162772125505
     m_ActionName: Player1/Jump[/DualSenseGamepadHID/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller1
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

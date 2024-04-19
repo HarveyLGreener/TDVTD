@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,10 +11,10 @@ public class PlayerMovement : MonoBehaviour
     public float FallSpeed = 20f;
     public float OriginalFallSpeed = 20f;
     public Rigidbody2D rb;
-    [SerializeField] private bool canDash=true;
-    [SerializeField] private float horizontalDash=15f;
-    [SerializeField] private float verticalDash=15f;
-    [SerializeField] private bool dashOnCooldown=false;
+    [SerializeField] private bool canDash = true;
+    [SerializeField] private float horizontalDash = 15f;
+    [SerializeField] private float verticalDash = 15f;
+    [SerializeField] private bool dashOnCooldown = false;
     [SerializeField] private bool cupheadDash = false;
     [SerializeField] private float dashTime = 0.25f;
     [SerializeField] private bool canJump = true;
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isParrying = false;
     public AnimationClip parryClip;
     public int parriesUsed = 0;
-    public bool activeAbility=false;
+    public bool activeAbility = false;
     public GameObject guns;
     public GameObject phantomDissolve;
     [SerializeField] private float hitStunLength = 0.5f;
@@ -50,11 +51,16 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 aim = Vector2.zero;
     public ScoreTracker scoreTracker;
     public GameObject hitParticle;
+    public PlayerInput playerInput;
 
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
+        DualShockGamepad gamepad = DualShockGamepad.current;
+        Debug.Log(gamepad);
+        gamepad.SetMotorSpeeds(1f, 1f);
         rb = GetComponent<Rigidbody2D>();
         initialHitStunLength = hitStunLength;
         initialIFramesLength = iFramesLength;
@@ -69,13 +75,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-            dashed = context.action.triggered;
+        dashed = context.action.triggered;
 
     }
 
     public void OnParry(InputAction.CallbackContext context)
     {
-            parry = context.action.triggered;
+        parry = context.action.triggered;
     }
 
     public void OnActive(InputAction.CallbackContext context)
@@ -98,16 +104,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (iFrames)
         {
-            if(!waitingForFlash && !flashComplete)
+            if (!waitingForFlash && !flashComplete)
             {
                 StartCoroutine(WaitForFlash());
             }
-            else if(flashComplete)
+            else if (flashComplete)
             {
                 this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
             }
         }
-        else if(!flashComplete && iFrames)
+        else if (!flashComplete && iFrames)
         {
 
         }
@@ -193,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
             winText.active = true;
             this.enabled = false;
         }
-        if (parry && parriesUsed < 1 && !isParrying) 
+        if (parry && parriesUsed < 1 && !isParrying)
         {
             StartCoroutine(Parry());
         }
@@ -210,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
         else if (iFrames && hit)
         {
             hitStunLength -= Time.deltaTime;
-            if (hitStunLength <=0)
+            if (hitStunLength <= 0)
             {
                 hit = false;
                 hitStunLength = initialHitStunLength;
@@ -293,12 +299,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
-        //GameObject particle = Instantiate(hitParticle, this.gameObject.transform);
-        //Destroy(particle, 0.33f);
+
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
         camAnim.SetTrigger("DamageTaken");
+        Gamepad.current.SetMotorSpeeds(0.25f, 1f);
+        //StartCoroutine(Rumble());
     }
 
     public IEnumerator WaitForFlash()
@@ -314,7 +321,7 @@ public class PlayerMovement : MonoBehaviour
         isParrying = true;
         parriesUsed = parriesUsed + 1;
         anim.Play("Parry", 0);
-        yield return new WaitForSeconds(parryClip.length*2f);
+        yield return new WaitForSeconds(parryClip.length * 2f);
         if (parriesUsed >= 1)
         {
             playerParry.color = Color.red;
@@ -329,6 +336,22 @@ public class PlayerMovement : MonoBehaviour
         while (running)
         {
 
+        }
+    }
+
+    public IEnumerator Rumble()
+    {
+        Debug.Log("Tried to Rumble");
+        Gamepad controller = Gamepad.current;
+        if (controller != null)
+        {
+            Debug.Log("Found controller");
+            controller.SetMotorSpeeds(0.25f, 1f);
+        }
+        yield return new WaitForSeconds(10f);
+        if (controller != null)
+        {
+            //controller.SetMotorSpeeds(0f, 0f);
         }
     }
 }
