@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] public bool isAttacking = false;
     public Animator anim;
     public GameObject hitParticle;
+    public Transform particleSpawnPoint;
 
     protected virtual void OnEnable()
     {
@@ -43,7 +44,7 @@ public class Weapon : MonoBehaviour
                 collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
                 collision.gameObject.GetComponent<PlayerMovement>().Damaged();
                 GameObject particle = Instantiate(hitParticle);
-                particle.transform.position = this.transform.position;
+                particle.transform.position = particleSpawnPoint.position;
                 Destroy(particle, 0.33f);
             }
             else if (collision.gameObject.GetComponent<PlayerMovement>().isParrying)
