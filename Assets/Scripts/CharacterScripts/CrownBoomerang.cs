@@ -66,6 +66,7 @@ public class CrownBoomerang : Weapon
     {
         if(col.gameObject != rattles.gameObject)
         {
+            particleSpawnPoint = col.gameObject.transform;
             base.OnTriggerEnter2D(col);
 
             if (col.GetComponent<PlayerMovement>() != null && col.GetComponent<PlayerMovement>().iFrames)
