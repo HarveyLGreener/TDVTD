@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         DualShockGamepad gamepad = DualShockGamepad.current;
         Debug.Log(gamepad);
-        gamepad.SetMotorSpeeds(1f, 1f);
+        gamepad.SetMotorSpeeds(0f, 0f);
         rb = GetComponent<Rigidbody2D>();
         initialHitStunLength = hitStunLength;
         initialIFramesLength = iFramesLength;
@@ -304,8 +304,6 @@ public class PlayerMovement : MonoBehaviour
         hit = true;
         anim.Play("Hit", 0);
         camAnim.SetTrigger("DamageTaken");
-        Gamepad.current.SetMotorSpeeds(0.25f, 1f);
-        //StartCoroutine(Rumble());
     }
 
     public IEnumerator WaitForFlash()
