@@ -3986,8 +3986,8 @@ MonoBehaviour:
   OriginalFallSpeed: 20
   rb: {fileID: 1874098240}
   canDash: 1
-  horizontalDash: 8
-  verticalDash: 15
+  horizontalDash: 6
+  verticalDash: 12
   dashOnCooldown: 0
   cupheadDash: 0
   dashTime: 0.25
@@ -4701,8 +4701,8 @@ MonoBehaviour:
   OriginalFallSpeed: 20
   rb: {fileID: 4185574772181952534}
   canDash: 1
-  horizontalDash: 8
-  verticalDash: 15
+  horizontalDash: 6
+  verticalDash: 12
   dashOnCooldown: 0
   cupheadDash: 1
   dashTime: 0.25
