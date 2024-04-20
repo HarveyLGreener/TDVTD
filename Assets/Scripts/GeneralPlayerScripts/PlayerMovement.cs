@@ -57,10 +57,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        DualShockGamepad gamepad = DualShockGamepad.current;
-        Debug.Log(gamepad);
-        gamepad.SetMotorSpeeds(0f, 0f);
         rb = GetComponent<Rigidbody2D>();
         initialHitStunLength = hitStunLength;
         initialIFramesLength = iFramesLength;
