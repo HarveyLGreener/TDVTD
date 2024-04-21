@@ -16,6 +16,8 @@ public class CrownBoomerang : Weapon
     private float direction;
     private Transform returnTarg;
     [SerializeField] private Rattles rattles;
+    private bool timerActive = false;
+    [SerializeField] private float lifespan = 5.0f;
 
     private void Start()
     {
@@ -26,6 +28,10 @@ public class CrownBoomerang : Weapon
     {
         if (thrown)
         {
+            if(!timerActive)
+            {
+                StartCoroutine(LifespanTimer());
+            }
             if (!hit)
             {
                 transform.position += velocity * Time.deltaTime;
@@ -53,7 +59,7 @@ public class CrownBoomerang : Weapon
     {
         this.direction = direction;
         targetPos = target;
-        velocity = ((target + new Vector3(5, 0, 0)) - transform.position).normalized * speed * direction;
+        velocity = ((target + rattles.getCrownThrowDist()) - transform.position).normalized * speed * direction;
         returnTarg = newReturnTarg;
 
         thrown = true;
@@ -96,6 +102,7 @@ public class CrownBoomerang : Weapon
             if (isDamagingOpp)
             {
                 StartCoroutine(WaitForDamagedCoroutine());
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
             else
             {
@@ -112,5 +119,13 @@ public class CrownBoomerang : Weapon
             yield return new WaitUntil(() => !oppHit.GetComponent<PlayerMovement>().iFrames);
         }
         isDamagingOpp = false;
+    }
+
+    public IEnumerator LifespanTimer()
+    {
+        timerActive = true;
+        yield return new WaitForSeconds(lifespan);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        dmg = 0;
     }
 }
