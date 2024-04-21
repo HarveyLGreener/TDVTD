@@ -5,6 +5,7 @@ using UnityEngine;
 public class CrownBoomerang : Weapon
 {
     [SerializeField] private float speed;
+    public GameObject Rattles;
 
     //private Transform spriteTransform;
     public Vector3 targetPos;
@@ -22,6 +23,7 @@ public class CrownBoomerang : Weapon
     private void Start()
     {
         //spriteTransform = transform.GetChild(0);
+        Rattles = GameObject.FindObjectOfType<Rattles>().gameObject;
     }
 
     private void Update()
@@ -70,9 +72,10 @@ public class CrownBoomerang : Weapon
     {
         if(col.gameObject != rattles.gameObject)
         {
+            particleSpawnPoint = col.gameObject.transform;
             base.OnTriggerEnter2D(col);
 
-            if (col.GetComponent<PlayerMovement>().iFrames)
+            if (col.GetComponent<PlayerMovement>() != null && col.GetComponent<PlayerMovement>().iFrames)
             {
                 oppHit = col.gameObject;
                 isDamagingOpp = true;

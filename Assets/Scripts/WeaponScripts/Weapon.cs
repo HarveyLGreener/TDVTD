@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float attackTime = 1f;
     [SerializeField] public bool isAttacking = false;
     public Animator anim;
+    public GameObject hitParticle;
+    public Transform particleSpawnPoint;
 
     protected virtual void OnEnable()
     {
@@ -25,8 +27,8 @@ public class Weapon : MonoBehaviour
             this.GetComponent<Collider2D>().enabled = true;
             anim.SetTrigger("Attack");
             yield return new WaitForSeconds(0.33f);
-            this.GetComponent<Collider2D>().enabled = false;
-            yield return new WaitForSeconds(attackTime);
+            Destroy(this.gameObject.GetComponent<Collider2D>());
+            //yield return new WaitForSeconds(attackTime);
             isAttacking = false;
         }
     }
@@ -40,24 +42,46 @@ public class Weapon : MonoBehaviour
             if (!collision.gameObject.GetComponent<PlayerMovement>().iFrames && !collision.gameObject.GetComponent<PlayerMovement>().isParrying && collision.gameObject.GetComponent<PlayerMovement>().hp>0)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().hp -= dmg;
-                StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().Damaged());
+                collision.gameObject.GetComponent<PlayerMovement>().Damaged();
+                GameObject particle = Instantiate(hitParticle);
+                particle.transform.position = particleSpawnPoint.position;
+                Destroy(particle, 0.33f);
             }
             else if (collision.gameObject.GetComponent<PlayerMovement>().isParrying)
             {
                 Debug.Log("Parried!");
-                StartCoroutine(parryStunned());
+                StartCoroutine(parryStunned()); GameObject particle = Instantiate(hitParticle);
             }
         }
     }
 
     public IEnumerator parryStunned()
     {
-        this.transform.parent.gameObject.GetComponent<PlayerMovement>().anim.Play("Stunned", 0);
-        this.transform.parent.gameObject.GetComponent<PlayerMovement>().enabled = false;
-        this.transform.parent.gameObject.GetComponent<GeneralWeapon>().enabled = false;
+        Debug.Log("Started Coroutine");
+        Debug.Log(this.transform.parent.parent.gameObject.name);
+        this.transform.parent.parent.gameObject.GetComponent<PlayerMovement>().anim.Play("Stunned", 0);
+        Debug.Log("Found parent and anim");
+        this.transform.parent.parent.gameObject.GetComponent<PlayerMovement>().enabled = false;
+        this.transform.parent.parent.gameObject.GetComponent<GeneralWeapon>().enabled = false;
+        Debug.Log("Disabled Stuff");
         yield return new WaitForSeconds(1.0f);
-        this.transform.parent.gameObject.GetComponent<PlayerMovement>().enabled = true;
-        this.transform.parent.gameObject.GetComponent<GeneralWeapon>().enabled = true;
+        this.transform.parent.parent.gameObject.GetComponent<PlayerMovement>().enabled = true;
+        this.transform.parent.parent.gameObject.GetComponent<GeneralWeapon>().enabled = true;
+        Debug.Log("Made it to end");
     }
 
+    public IEnumerator parryStunned(GameObject parent)
+    {
+        Debug.Log("Started Coroutine");
+        Debug.Log(this.transform.parent.parent.gameObject.name);
+        parent.GetComponent<PlayerMovement>().anim.Play("Stunned", 0);
+        Debug.Log("Found parent and anim");
+        parent.GetComponent<PlayerMovement>().enabled = false;
+        parent.GetComponent<GeneralWeapon>().enabled = false;
+        Debug.Log("Disabled Stuff");
+        yield return new WaitForSeconds(1.0f);
+        parent.GetComponent<PlayerMovement>().enabled = true;
+        parent.GetComponent<GeneralWeapon>().enabled = true;
+        Debug.Log("Made it to end");
+    }
 }

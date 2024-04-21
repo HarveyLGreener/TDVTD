@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,10 +11,10 @@ public class PlayerMovement : MonoBehaviour
     public float FallSpeed = 20f;
     public float OriginalFallSpeed = 20f;
     public Rigidbody2D rb;
-    [SerializeField] private bool canDash=true;
-    [SerializeField] private float horizontalDash=15f;
-    [SerializeField] private float verticalDash=15f;
-    [SerializeField] private bool dashOnCooldown=false;
+    [SerializeField] private bool canDash = true;
+    [SerializeField] private float horizontalDash = 15f;
+    [SerializeField] private float verticalDash = 15f;
+    [SerializeField] private bool dashOnCooldown = false;
     [SerializeField] private bool cupheadDash = false;
     [SerializeField] private float dashTime = 0.25f;
     [SerializeField] private bool canJump = true;
@@ -38,17 +39,29 @@ public class PlayerMovement : MonoBehaviour
     public bool isParrying = false;
     public AnimationClip parryClip;
     public int parriesUsed = 0;
-    public bool activeAbility=false;
+    public bool activeAbility = false;
     public GameObject guns;
     public GameObject phantomDissolve;
     [SerializeField] private float hitStunLength = 0.5f;
     [SerializeField] private float iFramesLength = 1.0f;
+    private float initialHitStunLength;
+    private float initialIFramesLength;
+    public bool jump = false;
+    public float timeChange;
+    public Vector2 aim = Vector2.zero;
+    public ScoreTracker scoreTracker;
+    public GameObject hitParticle;
+    public PlayerInput playerInput;
 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        initialHitStunLength = hitStunLength;
+        initialIFramesLength = iFramesLength;
+        scoreTracker = FindObjectOfType<ScoreTracker>();
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -58,13 +71,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-            dashed = context.action.triggered;
+        dashed = context.action.triggered;
 
     }
 
     public void OnParry(InputAction.CallbackContext context)
     {
-            parry = context.action.triggered;
+        parry = context.action.triggered;
     }
 
     public void OnActive(InputAction.CallbackContext context)
@@ -72,21 +85,31 @@ public class PlayerMovement : MonoBehaviour
         activeAbility = context.action.triggered;
     }
 
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jump = context.action.triggered;
+    }
+
+    public void Aiming(InputAction.CallbackContext context)
+    {
+        aim = context.ReadValue<Vector2>();
+    }
+
     // Update is called once per frame
     public virtual void Update()
     {
         if (iFrames)
         {
-            if(!waitingForFlash && !flashComplete)
+            if (!waitingForFlash && !flashComplete)
             {
                 StartCoroutine(WaitForFlash());
             }
-            else if(flashComplete)
+            else if (flashComplete)
             {
                 this.gameObject.GetComponent<SpriteRenderer>().color = Color.gray;
             }
         }
-        else if(!flashComplete && iFrames)
+        else if (!flashComplete && iFrames)
         {
 
         }
@@ -117,6 +140,14 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Running", false);
 
             }
+            if (inputX < 0 && aim == Vector2.zero)
+            {
+                this.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if (inputX > 0 && aim == Vector2.zero)
+            {
+                this.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
             transform.position += transform.right * inputX * MoveSpeed * Time.deltaTime;
 
 
@@ -127,9 +158,9 @@ public class PlayerMovement : MonoBehaviour
                 canDash = true;
                 anim.SetBool("Falling", false);
             }
-            if (rb.velocity.y == 0 && inputY > 0 && canJump == true)
+            if (rb.velocity.y == 0 && jump && canJump == true)
             {
-                rb.AddForce(transform.up * 10, ForceMode2D.Impulse);
+                rb.AddForce(transform.up * JumpSpeed, ForceMode2D.Impulse);
             }
             if (rb.velocity.y < -20f)
             {
@@ -148,6 +179,14 @@ public class PlayerMovement : MonoBehaviour
         }
         if (hp <= 0)
         {
+            if (this.gameObject.GetComponent<Rattles>() != null)
+            {
+                scoreTracker.PhantomPoint();
+            }
+            else
+            {
+                scoreTracker.RattlesPoint();
+            }
             anim.Play("Dead");
             foreach (Transform child in transform)
             {
@@ -156,9 +195,32 @@ public class PlayerMovement : MonoBehaviour
             winText.active = true;
             this.enabled = false;
         }
-        if (parry && parriesUsed < 1 && !isParrying) 
+        if (parry && parriesUsed < 1 && !isParrying)
         {
             StartCoroutine(Parry());
+        }
+        if (iFrames && !hit)
+        {
+            iFramesLength -= Time.deltaTime;
+            if (iFramesLength <= 0f)
+            {
+                iFrames = false;
+                iFramesLength = initialIFramesLength;
+                Debug.Log(iFramesLength);
+            }
+        }
+        else if (iFrames && hit)
+        {
+            hitStunLength -= Time.deltaTime;
+            if (hitStunLength <= 0)
+            {
+                hit = false;
+                hitStunLength = initialHitStunLength;
+            }
+        }
+        else
+        {
+            flashComplete = false;
         }
     }
     IEnumerator Dash()
@@ -231,18 +293,13 @@ public class PlayerMovement : MonoBehaviour
         gameObject.AddComponent<PolygonCollider2D>();
     }
 
-    public IEnumerator Damaged()
+    public void Damaged()
     {
+
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
-        Debug.Log("I was hit!");
         camAnim.SetTrigger("DamageTaken");
-        yield return new WaitForSeconds(hitStunLength);
-        hit = false;
-        yield return new WaitForSeconds(iFramesLength);
-        iFrames = false;
-        flashComplete = false;
     }
 
     public IEnumerator WaitForFlash()
@@ -258,11 +315,37 @@ public class PlayerMovement : MonoBehaviour
         isParrying = true;
         parriesUsed = parriesUsed + 1;
         anim.Play("Parry", 0);
-        yield return new WaitForSeconds(parryClip.length*2f);
+        yield return new WaitForSeconds(parryClip.length * 2f);
         if (parriesUsed >= 1)
         {
             playerParry.color = Color.red;
         }
         isParrying = false;
+    }
+
+    public void iFrameTimer(float iFramesLength)
+    {
+        Debug.Log(iFramesLength);
+        bool running = true;
+        while (running)
+        {
+
+        }
+    }
+
+    public IEnumerator Rumble()
+    {
+        Debug.Log("Tried to Rumble");
+        Gamepad controller = Gamepad.current;
+        if (controller != null)
+        {
+            Debug.Log("Found controller");
+            controller.SetMotorSpeeds(0.25f, 1f);
+        }
+        yield return new WaitForSeconds(10f);
+        if (controller != null)
+        {
+            //controller.SetMotorSpeeds(0f, 0f);
+        }
     }
 }

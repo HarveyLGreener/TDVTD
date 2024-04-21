@@ -6,23 +6,48 @@ public class Gun : Weapon
 {
     public GameObject projectile;
     public float direction;
+    public float initialAttackCooldown;
+    public bool canAttack = true;
+
+    public void Start()
+    {
+        initialAttackCooldown = attackTime;
+        attackTime = 0f;
+    }
     public override IEnumerator Attack()
     {
-        if (!isAttacking)
+        if (canAttack)
         {
             anim.Play("Fire", -1, 0f);
+            canAttack = false;
             isAttacking = true;
             Quaternion rotation = this.transform.rotation;
             GameObject bullet = Instantiate(projectile, new Vector3((this.transform.position.x)+(1* this.transform.localScale.x), this.transform.position.y, this.transform.position.z), rotation);
             bullet.GetComponent<Bullet>().direction = this.transform.localScale.x;
             bullet.GetComponent<Bullet>().player = this.GetComponentInParent<PlayerMovement>().gameObject;
             bullet.GetComponent<Bullet>().dmg = dmg;
+
             if (bullet.GetComponent<SpriteRenderer>().enabled)
             {
-                Destroy(bullet, 2.0f);
+                //Destroy(bullet, 2.0f);
             }
-            yield return new WaitForSeconds(attackTime);
+            attackTime = initialAttackCooldown;
+            yield return new WaitForSeconds(0.01f);
             isAttacking = false;
+        }
+    }
+
+    public void Update()
+    {
+        if (attackTime > 0f)
+        {
+            attackTime -= Time.deltaTime;
+        }
+        else
+        {
+            isAttacking = false;
+            attackTime = initialAttackCooldown;
+            canAttack = true;
         }
     }
 

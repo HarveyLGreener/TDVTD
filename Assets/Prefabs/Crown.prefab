@@ -104,7 +104,10 @@ MonoBehaviour:
   attackTime: 1
   isAttacking: 1
   anim: {fileID: 0}
+  hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
+    type: 3}
   speed: 25
+  Rattles: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   hit: 0
   oppHit: {fileID: 0}
