@@ -128,7 +128,6 @@ public class CrownBoomerang : Weapon
     {
         timerActive = true;
         yield return new WaitForSeconds(lifespan);
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        dmg = 0;
+        Destroy(gameObject);
     }
 }
