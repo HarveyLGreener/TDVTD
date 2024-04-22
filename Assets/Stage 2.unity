@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 64623116}
   m_Layer: 0
   m_Name: Up Right 2
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 73376377}
   m_Layer: 0
   m_Name: Down Right 1
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 141495833}
   m_Layer: 0
   m_Name: Down Center
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 291268845}
   m_Layer: 0
   m_Name: Down Left 4
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 327668550}
   m_Layer: 0
   m_Name: Upper Center (Top)
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 350971670}
   m_Layer: 0
   m_Name: Down Right 3
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 571779533}
   m_Layer: 0
   m_Name: Down Right 2
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 597020815}
   m_Layer: 0
   m_Name: Up Center (Top)
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 687781292}
   m_Layer: 0
   m_Name: Up Left 2
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 1022132675}
   m_Layer: 0
   m_Name: Down Right 4
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1102,7 +1102,7 @@ GameObject:
   - component: {fileID: 1214649044}
   m_Layer: 0
   m_Name: Up Right 1
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1160,7 +1160,7 @@ GameObject:
   - component: {fileID: 1309243261}
   m_Layer: 0
   m_Name: Center
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 1358355942}
   m_Layer: 0
   m_Name: Up Left 3
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1276,7 +1276,7 @@ GameObject:
   - component: {fileID: 1500930565}
   m_Layer: 0
   m_Name: Down Left 2
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 1575645038}
   m_Layer: 0
   m_Name: Up Right 3
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 1686428714}
   m_Layer: 0
   m_Name: Down Left 3
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1450,7 +1450,7 @@ GameObject:
   - component: {fileID: 1777791776}
   m_Layer: 0
   m_Name: Up Center (Bottom)
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1508,7 +1508,7 @@ GameObject:
   - component: {fileID: 1979197924}
   m_Layer: 0
   m_Name: Upper Center (Bottom)
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 2047229499}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 2078783743}
   m_Layer: 0
   m_Name: Up Left 1
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 2094895995}
   m_Layer: 0
   m_Name: Down Left 1
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
