@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 12374887}
   - component: {fileID: 12374889}
   - component: {fileID: 12374888}
+  - component: {fileID: 12374890}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Ground
@@ -268,6 +269,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &12374890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12374886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5988cb3182355f48b82417ce32dffff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &23963687
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,9 +587,11 @@ GameObject:
   m_Component:
   - component: {fileID: 103313424}
   - component: {fileID: 103313423}
+  - component: {fileID: 103313426}
+  - component: {fileID: 103313425}
   m_Layer: 0
   m_Name: tutorial_stage
-  m_TagString: Untagged
+  m_TagString: CrownDestroy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -648,6 +663,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &103313425
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103313422}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.9007249, y: -9.902429}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 50, y: 35.009766}
+    newSize: {x: 50, y: 35.009766}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16683519, y: 15.204908}
+  m_EdgeRadius: 0
+--- !u!61 &103313426
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103313422}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.9221525, y: -9.897695}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 50, y: 35.009766}
+    newSize: {x: 50, y: 35.009766}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.17535698, y: 15.214376}
+  m_EdgeRadius: 0
 --- !u!1 &111737660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,6 +2469,7 @@ GameObject:
   - component: {fileID: 1131363471}
   - component: {fileID: 1131363473}
   - component: {fileID: 1131363472}
+  - component: {fileID: 1131363474}
   m_Layer: 0
   m_Name: Square
   m_TagString: Ground
@@ -2503,6 +2571,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1131363474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131363470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5988cb3182355f48b82417ce32dffff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1152051752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4024,7 +4104,7 @@ MonoBehaviour:
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}
   playerInput: {fileID: 0}
-  crownThrowDist: {x: 5, y: 0, z: 0}
+  crownThrowDist: {x: 10, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
   holdingBoomerang: 1
