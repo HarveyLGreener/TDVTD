@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ScoreTracker : MonoBehaviour
     private int player1Score = 0;
     private int player2Score = 0;
     public int firstTo;
+    public bool reloaded = false;
     // Start is called before the first frame update
 
     public void PhantomPoint()
@@ -21,6 +23,7 @@ public class ScoreTracker : MonoBehaviour
             Debug.Log("Phantom Wins!");
             player1Score = 0;
             player2Score = 0;
+            reloaded = false;
         }
     }
 
@@ -40,5 +43,15 @@ public class ScoreTracker : MonoBehaviour
     {
         player1.text = "" + player1Score;
         player2.text = "" + player2Score;
+    }
+
+    private void Update()
+    {
+        if (player1Score == 0 && player2Score == 0 && !reloaded)
+        {
+            player1.text = "" + player1Score;
+            player2.text = "" + player2Score;
+            reloaded = false;
+        }
     }
 }

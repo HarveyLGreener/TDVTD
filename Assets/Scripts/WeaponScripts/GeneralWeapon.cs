@@ -118,16 +118,16 @@ public class GeneralWeapon : MonoBehaviour
                     else if (attackDirection.x < 0)
                     {
                         scaleFactor = -1f;
-                        Debug.Log("Got here");
                     }
-                    this.gameObject.transform.localScale = new Vector3(scaleFactor, 1f, 1f);
-                    if (weaponAnchor.transform.lossyScale.x != scaleFactor)
+                    if (weaponAnchor.transform.lossyScale.x != this.gameObject.transform.lossyScale.x)
                     {
                         weaponAnchor.transform.parent = null;
-                        weaponAnchor.transform.localScale = new Vector3(scaleFactor, weaponAnchor.transform.localScale.y, weaponAnchor.transform.localScale.z);
+                        this.gameObject.transform.localScale = new Vector3(weaponAnchor.transform.lossyScale.x, 1f, 1f);
                         weaponAnchor.transform.parent = this.gameObject.transform;
                     }
-                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (attackDirection.y * 90f * scaleFactor));
+                    this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
+                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (90f * attackDirection.y * this.gameObject.transform.localScale.x));
+                    attackDirection = Vector2.zero;
                 }
             }
             else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking && playerDirection == Vector2.zero)
@@ -178,7 +178,7 @@ public class GeneralWeapon : MonoBehaviour
                 }
                 weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (inputY * 90f * scaleFactor));
             }
-            else if (attackDirection == Vector2.zero && playerDirection != Vector2.zero && weaponAim == Vector2.zero)
+            else if (attackDirection == Vector2.zero && playerDirection != Vector2.zero && cooldown <= 0f)
             {
                 weaponAnchor.transform.localScale = new Vector3(1f, 1f, 1f);
                 weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, 0f);
@@ -186,7 +186,7 @@ public class GeneralWeapon : MonoBehaviour
             if (attacked)
             {
                 cooldown = 0.3f;
-                
+
                 foreach (GameObject weapon in weapons)
                 {
                     if (isSword)
