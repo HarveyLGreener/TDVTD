@@ -47,6 +47,7 @@ public class CrownBoomerang : Weapon
             {
                 transform.position += velocity * Time.deltaTime;
                 velocity = Vector3.Lerp(velocity, (returnTarg.position - transform.position).normalized * speed, Time.deltaTime * 5f);
+                Debug.Log(velocity);
             }
             //spriteTransform.Rotate(new Vector3(0, 0, Time.deltaTime * 100f));
         }
@@ -82,6 +83,10 @@ public class CrownBoomerang : Weapon
                 /*this.GetComponent<BoxCollider2D>().isTrigger = false;
                 StartCoroutine(WaitForDamagedCoroutine);
                 this.GetComponent<BoxCollider2D>().isTrigger = true;*/
+            }
+            else if (col.gameObject.tag == "CrownDestroy")
+            {
+                Destroy(gameObject);
             }
         }
 /*        else if(hit)
