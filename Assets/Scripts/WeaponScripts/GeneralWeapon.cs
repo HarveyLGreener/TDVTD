@@ -186,7 +186,6 @@ public class GeneralWeapon : MonoBehaviour
             if (attacked)
             {
                 cooldown = 0.3f;
-                attacked = false;
                 
                 foreach (GameObject weapon in weapons)
                 {
@@ -207,6 +206,7 @@ public class GeneralWeapon : MonoBehaviour
                         StartCoroutine(weapon.GetComponent<Gun>().Attack());
                     }
                 }
+                attacked = false;
             }
 
         }
