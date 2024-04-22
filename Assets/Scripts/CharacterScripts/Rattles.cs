@@ -6,7 +6,7 @@ public class Rattles : PlayerMovement
 {
     //[SerializeField] private GameObject crown;
     //[SerializeField] private float crownSpeed = 50f;
-    [SerializeField] private Vector3 crownThrowDist = new Vector3(5, 0, 0);
+    [SerializeField] private Vector3 crownThrowDist = new Vector3(10, 0, 0);
     [SerializeField] private CrownBoomerang crown;
     [SerializeField] private CrownBoomerang crownToThr;
     private float direction;
@@ -43,6 +43,11 @@ public class Rattles : PlayerMovement
         }
         base.Update();
 
+    }
+
+    public Vector3 getCrownThrowDist()
+    {
+        return crownThrowDist;
     }
 
     public IEnumerator CrownCooldown()
