@@ -52,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
     public ScoreTracker scoreTracker;
     public GameObject hitParticle;
     public PlayerInput playerInput;
-    public float otherAiming;
 
 
     // Start is called before the first frame update
@@ -96,15 +95,9 @@ public class PlayerMovement : MonoBehaviour
         aim = context.ReadValue<Vector2>();
     }
 
-    public void OtherAiming(InputAction.CallbackContext context)
-    {
-        otherAiming = 0.3f;
-    }
-
     // Update is called once per frame
     public virtual void Update()
     {
-        otherAiming -= Time.deltaTime;
         if (iFrames)
         {
             if (!waitingForFlash && !flashComplete)
@@ -147,11 +140,11 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("Running", false);
 
             }
-            if (inputX < 0 && aim == Vector2.zero && otherAiming <= 0f)
+            if (inputX < 0 && aim == Vector2.zero)
             {
                 this.gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
             }
-            else if (inputX > 0 && aim == Vector2.zero && otherAiming <= 0f)
+            else if (inputX > 0 && aim == Vector2.zero)
             {
                 this.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             }

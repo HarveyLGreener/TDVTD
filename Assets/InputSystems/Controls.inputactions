@@ -60,42 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AttackUp",
-                    "type": "Button",
-                    "id": "f3754ae9-6441-4796-93a1-e72331ffda79",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "AttackRight",
-                    "type": "Button",
-                    "id": "301a389e-4a31-40bc-84e3-031657a1b397",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "AttackSouth",
-                    "type": "Button",
-                    "id": "6170361a-db2b-4c73-a50e-9c9624148e82",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "AttackLeft",
-                    "type": "Button",
-                    "id": "0a64cb54-f4c0-47bb-97fc-6173b68081a9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "9c1923d2-16ac-4581-939a-968994be341e",
@@ -394,6 +358,17 @@
                 },
                 {
                     "name": "",
+                    "id": "38bab6e6-f83c-4829-bbdc-76871cc58236",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8d2cb6f5-eab4-43fb-9c28-7b88a26477a4",
                     "path": "<Gamepad>/leftStickPress",
                     "interactions": "Press(pressPoint=0.9)",
@@ -411,50 +386,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Parry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "41541f76-fad1-4f02-a411-b37be781374e",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "56a91893-4858-4faf-83d1-893f7164ed11",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e6b24bfd-5154-4e67-8e6c-1df5cc4ef18f",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "40253d10-0844-4c0b-b965-5fba2c194af6",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackSouth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
