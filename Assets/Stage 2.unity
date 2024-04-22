@@ -1721,6 +1721,12 @@ Transform:
   m_Father: {fileID: 2047229499}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2105386838 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5590878285451214359, guid: a065298cfea76e241993b05ed6bb5e68,
+    type: 3}
+  m_PrefabInstance: {fileID: 337784062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &816666054959733891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,7 +1758,7 @@ MonoBehaviour:
   flashComplete: 0
   waitingForFlash: 0
   anim: {fileID: 8485789605257619890}
-  camAnim: {fileID: 0}
+  camAnim: {fileID: 2105386838}
   currentAnim: 0
   hit: 0
   iFrames: 0
@@ -3767,7 +3773,7 @@ MonoBehaviour:
   flashComplete: 0
   waitingForFlash: 0
   anim: {fileID: 3903386063944361510}
-  camAnim: {fileID: 0}
+  camAnim: {fileID: 2105386838}
   currentAnim: 0
   hit: 0
   iFrames: 0
