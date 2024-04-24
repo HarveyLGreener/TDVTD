@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public bool attacked = false;
     public bool flashComplete = false;
     public bool waitingForFlash = false;
+    public bool controlsLocked = false;
     public Animator anim;
     public Animator camAnim;
     public int currentAnim = 0;
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     public ScoreTracker scoreTracker;
     public GameObject hitParticle;
     public PlayerInput playerInput;
+    [SerializeField] private AnimationClip introAnim;
 
 
     // Start is called before the first frame update
@@ -98,6 +100,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        if(anim.GetCurrentAnimatorClipInfo(0)[0].clip == introAnim && !controlsLocked)
+        {
+            gameObject.GetComponent<PlayerInput>().enabled = false;
+            StartCoroutine(WaitForIntroAnim());
+        }
+
         if (iFrames)
         {
             if (!waitingForFlash && !flashComplete)
@@ -295,11 +303,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
-
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
         camAnim.SetTrigger("DamageTaken");
+    }
+
+    public IEnumerator WaitForIntroAnim()
+    {
+        controlsLocked = true;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        gameObject.GetComponent<PlayerInput>().enabled = true;
+        controlsLocked = false;
     }
 
     public IEnumerator WaitForFlash()

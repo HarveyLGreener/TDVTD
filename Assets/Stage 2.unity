@@ -1757,6 +1757,7 @@ MonoBehaviour:
   attacked: 0
   flashComplete: 0
   waitingForFlash: 0
+  controlsLocked: 0
   anim: {fileID: 8485789605257619890}
   camAnim: {fileID: 2105386838}
   currentAnim: 0
@@ -1784,6 +1785,7 @@ MonoBehaviour:
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}
   playerInput: {fileID: 0}
+  introAnim: {fileID: 7400000, guid: d6b2d1712a80fe94b87d4fef82f15b6e, type: 2}
 --- !u!4 &834554661264061419
 Transform:
   m_ObjectHideFlags: 0
@@ -3657,6 +3659,7 @@ MonoBehaviour:
   attacked: 0
   flashComplete: 0
   waitingForFlash: 0
+  controlsLocked: 0
   anim: {fileID: 3903386063944361510}
   camAnim: {fileID: 2105386838}
   currentAnim: 0
@@ -3683,6 +3686,7 @@ MonoBehaviour:
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}
   playerInput: {fileID: 0}
+  introAnim: {fileID: 7400000, guid: 83d943ea82d95bf42bba2afe2a6038cf, type: 2}
   crownThrowDist: {x: 10, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
