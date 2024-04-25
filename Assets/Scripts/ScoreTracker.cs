@@ -11,7 +11,6 @@ public class ScoreTracker : MonoBehaviour
     private int player1Score = 0;
     private int player2Score = 0;
     public int firstTo;
-    public bool reloaded = false;
     // Start is called before the first frame update
 
     public void PhantomPoint()
@@ -23,7 +22,7 @@ public class ScoreTracker : MonoBehaviour
             Debug.Log("Phantom Wins!");
             player1Score = 0;
             player2Score = 0;
-            reloaded = false;
+            StartCoroutine(ResetScoreBoard());
         }
     }
 
@@ -36,6 +35,7 @@ public class ScoreTracker : MonoBehaviour
             Debug.Log("Rattles Wins!");
             player1Score = 0;
             player2Score = 0;
+            StartCoroutine(ResetScoreBoard());
         }
     }
 
@@ -45,13 +45,10 @@ public class ScoreTracker : MonoBehaviour
         player2.text = "" + player2Score;
     }
 
-    private void Update()
+    IEnumerator ResetScoreBoard()
     {
-        if (player1Score == 0 && player2Score == 0 && !reloaded)
-        {
-            player1.text = "" + player1Score;
-            player2.text = "" + player2Score;
-            reloaded = false;
-        }
+        yield return new WaitForSeconds(5f);
+        player1.text = "" + player1Score;
+        player2.text = "" + player2Score;
     }
 }
