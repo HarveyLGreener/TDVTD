@@ -3827,7 +3827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3903386064109719425
 GameObject:
   m_ObjectHideFlags: 0
@@ -5436,6 +5436,7 @@ MonoBehaviour:
   player1: {fileID: 3903386063634197596}
   player2: {fileID: 3903386063414400254}
   firstTo: 3
+  reloaded: 0
 --- !u!1 &3903386065039782379
 GameObject:
   m_ObjectHideFlags: 0

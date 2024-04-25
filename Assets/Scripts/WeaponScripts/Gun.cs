@@ -22,8 +22,8 @@ public class Gun : Weapon
             canAttack = false;
             isAttacking = true;
             Quaternion rotation = this.transform.rotation;
-            GameObject bullet = Instantiate(projectile, new Vector3((this.transform.position.x)+(1* this.transform.localScale.x), this.transform.position.y, this.transform.position.z), rotation);
-            bullet.GetComponent<Bullet>().direction = this.transform.localScale.x;
+            GameObject bullet = Instantiate(projectile, new Vector3((this.transform.position.x), this.transform.position.y, this.transform.position.z), rotation);
+            bullet.GetComponent<Bullet>().direction = this.transform.lossyScale.x;
             bullet.GetComponent<Bullet>().player = this.GetComponentInParent<PlayerMovement>().gameObject;
             bullet.GetComponent<Bullet>().dmg = dmg;
 
