@@ -223,6 +223,13 @@ public class PlayerMovement : MonoBehaviour
             flashComplete = false;
         }
     }
+    private void LateUpdate()
+    {
+        jump = false;
+        dashed = false;
+        activeAbility = false;
+        parry = false;
+    }
     IEnumerator Dash()
     {
         dashOnCooldown = true;
