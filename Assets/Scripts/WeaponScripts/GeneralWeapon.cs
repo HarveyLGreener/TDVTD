@@ -29,47 +29,6 @@ public class GeneralWeapon : MonoBehaviour
         attacked = context.action.triggered;
     }
 
-    public void OnAttackDown(InputAction.CallbackContext context)
-    {
-        if (cooldown <= 0f)
-        {
-            //attacked = context.action.triggered;
-            attackDirection = new Vector2(0f, -1f);
-            if (attackDirection == new Vector2(0f, -1f))
-            {
-                attacked = context.action.triggered;
-            }
-        }
-    }
-
-    public void OnAttackUp(InputAction.CallbackContext context)
-    {
-        if (cooldown<= 0f)
-        {
-            attacked = context.action.triggered;
-            attackDirection = new Vector2(0f, 1f);
-        }
-
-    }
-
-    public void OnAttackRight(InputAction.CallbackContext context)
-    {
-        if (cooldown <= 0f)
-        {
-            attacked = context.action.triggered;
-            attackDirection = new Vector2(1f, 0f);
-        }
-    }
-
-    public void OnAttackLeft(InputAction.CallbackContext context)
-    {
-        if (cooldown <= 0f)
-        {
-            attacked = context.action.triggered;
-            attackDirection = new Vector2(-1f, 0f);
-        }
-    }
-
     public void MoveDirection(InputAction.CallbackContext context)
     {
         playerDirection = context.ReadValue<Vector2>();
@@ -87,50 +46,7 @@ public class GeneralWeapon : MonoBehaviour
         float inputY = weaponAim.y;
         if (!this.gameObject.GetComponent<PlayerMovement>().hit)
         {
-            if (attackDirection != Vector2.zero)
-            {
-                if (!weapons[0].GetComponent<Weapon>().isAttacking && playerDirection == Vector2.zero)
-                {
-                    if (attackDirection.x > 0)
-                    {
-                        scaleFactor = 1f;
-                    }
-                    else if (attackDirection.x < 0)
-                    {
-                        scaleFactor = -1f;
-                    }
-                    if (weaponAnchor.transform.lossyScale.x != this.gameObject.transform.lossyScale.x)
-                    {
-                        weaponAnchor.transform.parent = null;
-                        this.gameObject.transform.localScale = new Vector3(weaponAnchor.transform.lossyScale.x, 1f, 1f);
-                        weaponAnchor.transform.parent = this.gameObject.transform;
-                    }
-                    this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
-                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (90f * attackDirection.y * this.gameObject.transform.localScale.x));
-                    attackDirection = Vector2.zero;
-                }
-                else if (!weapons[0].GetComponent<Weapon>().isAttacking && playerDirection != Vector2.zero)
-                {
-                    if (attackDirection.x > 0)
-                    {
-                        scaleFactor = 1f;
-                    }
-                    else if (attackDirection.x < 0)
-                    {
-                        scaleFactor = -1f;
-                    }
-                    if (weaponAnchor.transform.lossyScale.x != this.gameObject.transform.lossyScale.x)
-                    {
-                        weaponAnchor.transform.parent = null;
-                        this.gameObject.transform.localScale = new Vector3(weaponAnchor.transform.lossyScale.x, 1f, 1f);
-                        weaponAnchor.transform.parent = this.gameObject.transform;
-                    }
-                    this.gameObject.transform.localScale = new Vector3(scaleFactor, transform.localScale.y, transform.localScale.z);
-                    weaponAnchor.transform.eulerAngles = new Vector3(0f, 0f, (90f * attackDirection.y * this.gameObject.transform.localScale.x));
-                    attackDirection = Vector2.zero;
-                }
-            }
-            else if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking && playerDirection == Vector2.zero)
+            if (weaponAim != Vector2.zero && !weapons[0].GetComponent<Weapon>().isAttacking && playerDirection == Vector2.zero)
             {
                 if (inputX > 0)
                 {
