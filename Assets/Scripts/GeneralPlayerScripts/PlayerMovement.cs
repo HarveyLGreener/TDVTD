@@ -52,7 +52,9 @@ public class PlayerMovement : MonoBehaviour
     public ScoreTracker scoreTracker;
     public GameObject hitParticle;
     public PlayerInput playerInput;
-
+    private bool controlsLocked = false;
+    public AnimationClip introAnim;
+    public GameObject phantomSmokeScreen;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -98,6 +100,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip == introAnim && !controlsLocked)
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            gameObject.GetComponent<PlayerInput>().enabled = false;
+            StartCoroutine(WaitForIntroAnim());
+        }
         if (iFrames)
         {
             if (!waitingForFlash && !flashComplete)
@@ -354,5 +365,20 @@ public class PlayerMovement : MonoBehaviour
         {
             //controller.SetMotorSpeeds(0f, 0f);
         }
+    }
+
+    public IEnumerator WaitForIntroAnim()
+    {
+        controlsLocked = true;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        foreach (Transform child in transform)
+        {
+            if (child != phantomSmokeScreen.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+        gameObject.GetComponent<PlayerInput>().enabled = true;
+        controlsLocked = false;
     }
 }
