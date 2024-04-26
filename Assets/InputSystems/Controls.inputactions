@@ -236,6 +236,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "f16a21a0-3e13-48c2-b9a7-e34b3568186e",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "WASD",
                     "id": "063d87a8-beec-44b4-a85f-7d4750517eb4",
                     "path": "2DVector(mode=2)",
@@ -348,7 +359,7 @@
                 {
                     "name": "",
                     "id": "002a4de2-7a2c-46c1-993a-cfdf58de2b96",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -359,18 +370,7 @@
                 {
                     "name": "",
                     "id": "8d2cb6f5-eab4-43fb-9c28-7b88a26477a4",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "Press(pressPoint=0.9)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Parry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "15140d5a-a30c-4b5f-aefa-362525a3c9ad",
-                    "path": "<Gamepad>/rightStickPress",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "Press(pressPoint=0.9)",
                     "processors": "",
                     "groups": "",
