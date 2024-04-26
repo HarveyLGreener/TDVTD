@@ -7,13 +7,26 @@ public class StageSelection : MonoBehaviour
 {
     public GameObject[] stages;
     public int index = 0;
-    public Vector2 direction;
     public bool selected = false;
-    public void ChangeStageSelection(InputAction.CallbackContext context)
+    public int indexAdder = 0;
+    public bool pressed = false;
+    public void ChangeStageSelectionRight(InputAction.CallbackContext context)
     {
-        direction = context.ReadValue<Vector2>();
-    }
 
+            pressed = context.action.triggered;
+            if (pressed)
+            {
+            indexAdder++;
+        }
+    }
+    public void ChangeStageSelectionLeft(InputAction.CallbackContext context)
+    {
+        pressed = context.action.triggered;
+        if (pressed)
+        {
+            indexAdder--;
+        }
+    }
     public void Select(InputAction.CallbackContext context)
     {
         selected = context.action.triggered;
@@ -23,15 +36,7 @@ public class StageSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (direction.x < 0)
-        {
-            index--;
-        }
-        else if (direction.x > 0)
-        {
-            index++;
-        }
-
+        index += indexAdder;
         if (index < 0)
         {
             index = stages.Length-1;
@@ -60,6 +65,7 @@ public class StageSelection : MonoBehaviour
 
     private void LateUpdate()
     {
-        direction = Vector2.zero;
+        indexAdder = 0;
+        pressed = false;
     }
 }

@@ -995,19 +995,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 680063709}
-        m_TargetAssemblyTypeName: StageSelection, Assembly-CSharp
-        m_MethodName: ChangeStageSelection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 91bc0089-0bbe-4b60-9ee9-ec92813b18df
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
   - m_PersistentCalls:
@@ -1034,9 +1022,41 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9c1923d2-16ac-4581-939a-968994be341e
     m_ActionName: Player/Jump[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 680063709}
+        m_TargetAssemblyTypeName: StageSelection, Assembly-CSharp
+        m_MethodName: ChangeStageSelectionRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a90311ae-6e0f-4733-b5d8-c1a9e2d479b9
+    m_ActionName: Stage Select/Right
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 680063709}
+        m_TargetAssemblyTypeName: StageSelection, Assembly-CSharp
+        m_MethodName: ChangeStageSelectionLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 29b0842f-6c34-4dcf-bcf2-cb40ac63f787
+    m_ActionName: Stage Select/Left
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Stage Select
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &680063709
@@ -1056,8 +1076,9 @@ MonoBehaviour:
   - {fileID: 1256638553}
   - {fileID: 463296283}
   index: 0
-  direction: {x: 0, y: 0}
   selected: 0
+  indexAdder: 0
+  pressed: 0
 --- !u!1 &687781290
 GameObject:
   m_ObjectHideFlags: 0
