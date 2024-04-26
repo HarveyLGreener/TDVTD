@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class ScoreTracker : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class ScoreTracker : MonoBehaviour
     private int player1Score = 0;
     private int player2Score = 0;
     public int firstTo;
+    public GameObject phantom;
+    public GameObject rattles;
     // Start is called before the first frame update
 
     public void PhantomPoint()
     {
         player1Score += 1;
         player1.text ="" + player1Score;
+        rattles.GetComponent<PlayerInput>().SwitchCurrentActionMap("Stage Select");
         if (player1Score >= firstTo)
         {
             Debug.Log("Phantom Wins!");
@@ -30,6 +34,7 @@ public class ScoreTracker : MonoBehaviour
     {
         player2Score += 1;
         player2.text = "" + player2Score;
+        phantom.GetComponent<PlayerInput>().SwitchCurrentActionMap("Stage Select");
         if (player2Score >= firstTo)
         {
             Debug.Log("Rattles Wins!");

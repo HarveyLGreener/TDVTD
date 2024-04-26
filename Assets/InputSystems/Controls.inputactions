@@ -401,6 +401,15 @@
                     "processors": "",
                     "interactions": "Press(pressPoint=0.9)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Selected",
+                    "type": "Button",
+                    "id": "a9bb7d36-46bf-4364-b541-a6a359efe08b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(pressPoint=0.9,behavior=1)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -445,6 +454,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0993a59f-333e-4db3-b789-09b8743b0656",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Selected",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

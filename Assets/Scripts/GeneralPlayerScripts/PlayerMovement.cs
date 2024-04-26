@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     private bool controlsLocked = false;
     public AnimationClip introAnim;
     public GameObject phantomSmokeScreen;
+    public GameObject stageSelect;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -193,17 +194,19 @@ public class PlayerMovement : MonoBehaviour
             if (this.gameObject.GetComponent<Rattles>() != null)
             {
                 scoreTracker.PhantomPoint();
+                //this.gameObject.GetComponent<PlayerInput>().enabled = false;
             }
             else
             {
                 scoreTracker.RattlesPoint();
+                //this.gameObject.GetComponent<PlayerInput>().enabled = false;
             }
+            stageSelect.SetActive(true);
             anim.Play("Dead");
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(false);
             }
-            winText.active = true;
             this.enabled = false;
         }
         if (parry && parriesUsed < 1 && !isParrying)

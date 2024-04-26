@@ -10,6 +10,7 @@ public class StageSelection : MonoBehaviour
     public bool selected = false;
     public int indexAdder = 0;
     public bool pressed = false;
+    public Gamepad loser;
     public void ChangeStageSelectionRight(InputAction.CallbackContext context)
     {
 
@@ -60,12 +61,16 @@ public class StageSelection : MonoBehaviour
             }
         }
 
-        
+        if (selected)
+        {
+            Debug.Log(index);
+        }
     }
 
     private void LateUpdate()
     {
         indexAdder = 0;
         pressed = false;
+        selected = false;
     }
 }
