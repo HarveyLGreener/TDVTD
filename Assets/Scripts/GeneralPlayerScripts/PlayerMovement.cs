@@ -316,7 +316,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
-
+        DualShockGamepad.current.SetMotorSpeeds(0.6f, 1f);
+        Debug.Log("Attempted to Rumble");
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
