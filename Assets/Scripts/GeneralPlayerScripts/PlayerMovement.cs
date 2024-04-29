@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     public AnimationClip introAnim;
     public GameObject phantomSmokeScreen;
     public GameObject stageSelect;
+    public int controllerNum;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -385,6 +386,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         gameObject.GetComponent<PlayerInput>().enabled = true;
+        var gamepads = Gamepad.all;
+        InputDevice gamepad = gamepads[controllerNum];
+        this.GetComponent<PlayerInput>().SwitchCurrentControlScheme(gamepad);
+        Debug.Log(Gamepad.all[controllerNum]);
         controlsLocked = false;
     }
 

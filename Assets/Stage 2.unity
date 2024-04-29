@@ -900,6 +900,11 @@ PrefabInstance:
       propertyPath: stageSelect
       value: 
       objectReference: {fileID: 517867348}
+    - target: {fileID: 3331078782982193572, guid: fdcae15aab4209e479f13976016b2cde,
+        type: 3}
+      propertyPath: controllerNum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3385529311989231308, guid: fdcae15aab4209e479f13976016b2cde,
         type: 3}
       propertyPath: m_RootOrder
