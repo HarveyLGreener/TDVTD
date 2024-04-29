@@ -204,7 +204,14 @@ public class PlayerMovement : MonoBehaviour
                 scoreTracker.RattlesPoint();
                 //this.gameObject.GetComponent<PlayerInput>().enabled = false;
             }
-            stageSelect.SetActive(true);
+            if (scoreTracker.player1Score >= scoreTracker.firstTo || scoreTracker.player2Score >= scoreTracker.firstTo)
+            {
+
+            }
+            else
+            {
+                stageSelect.SetActive(true);
+            }
             anim.Play("Dead");
             foreach (Transform child in transform)
             {

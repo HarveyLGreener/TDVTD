@@ -8,6 +8,7 @@ TagManager:
   - Melee
   - Gun
   - CrownDestroy
+  - StageSelect
   layers:
   - Default
   - TransparentFX

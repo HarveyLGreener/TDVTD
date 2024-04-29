@@ -514,6 +514,11 @@ PrefabInstance:
       propertyPath: rattles
       value: 
       objectReference: {fileID: 261780510}
+    - target: {fileID: 8455130546455744934, guid: 0c6b773e4fae99a47bf3ada011fade90,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6b773e4fae99a47bf3ada011fade90, type: 3}
 --- !u!1 &261780510 stripped
@@ -638,6 +643,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StageSelectCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674934090979685036, guid: dd9d15ae8c06cb34b97e0ced0674572e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674934090979685036, guid: dd9d15ae8c06cb34b97e0ced0674572e,
+        type: 3}
+      propertyPath: m_TagString
+      value: StageSelect
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd9d15ae8c06cb34b97e0ced0674572e, type: 3}

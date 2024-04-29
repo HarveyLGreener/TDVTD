@@ -9,11 +9,13 @@ public class ScoreTracker : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI player1;
     [SerializeField] private TextMeshProUGUI player2;
-    private int player1Score = 0;
-    private int player2Score = 0;
+    public int player1Score = 0;
+    public int player2Score = 0;
     public int firstTo;
     public GameObject phantom;
     public GameObject rattles;
+    public GameObject winText;
+    public TextMeshProUGUI winner;
     // Start is called before the first frame update
 
     public void PhantomPoint()
@@ -23,10 +25,7 @@ public class ScoreTracker : MonoBehaviour
         rattles.GetComponent<PlayerInput>().SwitchCurrentActionMap("Stage Select");
         if (player1Score >= firstTo)
         {
-            Debug.Log("Phantom Wins!");
-            player1Score = 0;
-            player2Score = 0;
-            StartCoroutine(ResetScoreBoard());
+            StartCoroutine(ResetScoreBoard("Phantom"));
         }
         rattles = null;
     }
@@ -38,10 +37,7 @@ public class ScoreTracker : MonoBehaviour
         phantom.GetComponent<PlayerInput>().SwitchCurrentActionMap("Stage Select");
         if (player2Score >= firstTo)
         {
-            Debug.Log("Rattles Wins!");
-            player1Score = 0;
-            player2Score = 0;
-            StartCoroutine(ResetScoreBoard());
+            StartCoroutine(ResetScoreBoard("Rattles"));
         }
         rattles = null;
     }
@@ -52,11 +48,17 @@ public class ScoreTracker : MonoBehaviour
         player2.text = "" + player2Score;
     }
 
-    IEnumerator ResetScoreBoard()
+    IEnumerator ResetScoreBoard(string player)
     {
-        yield return new WaitForSeconds(5f);
+        winText.active = true;
+        winner.text = player + " wins!";
+        yield return new WaitForSeconds(10f);
+        player1Score = 0;
+        player2Score = 0;
         player1.text = "" + player1Score;
         player2.text = "" + player2Score;
+        winText.active = false;
+        SceneManager.LoadScene(0);
     }
 
     private void Update()
