@@ -160,7 +160,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3410837560666003555}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1741.2388, y: 416.1302, z: -8.217119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -242,6 +242,8 @@ MonoBehaviour:
   player1: {fileID: 3410837561745344191}
   player2: {fileID: 3410837561457966621}
   firstTo: 3
+  phantom: {fileID: 0}
+  rattles: {fileID: 0}
 --- !u!1 &3410837561220130033
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class StageSelection : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class StageSelection : MonoBehaviour
 
         if (selected)
         {
-            Debug.Log(index);
+            SceneManager.LoadScene(index);
         }
     }
 

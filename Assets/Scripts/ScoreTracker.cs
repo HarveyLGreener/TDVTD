@@ -56,4 +56,16 @@ public class ScoreTracker : MonoBehaviour
         player1.text = "" + player1Score;
         player2.text = "" + player2Score;
     }
+
+    private void Update()
+    {
+        if (rattles == null)
+        {
+            rattles = FindObjectOfType<Rattles>().gameObject;
+        }
+        if (phantom == null)
+        {
+            phantom = FindObjectOfType<Phantom>().gameObject;
+        }
+    }
 }

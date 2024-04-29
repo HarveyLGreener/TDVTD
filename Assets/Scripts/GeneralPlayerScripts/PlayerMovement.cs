@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
         initialHitStunLength = hitStunLength;
         initialIFramesLength = iFramesLength;
         scoreTracker = FindObjectOfType<ScoreTracker>();
-
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -316,8 +315,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
-        DualShockGamepad.current.SetMotorSpeeds(0.6f, 1f);
-        Debug.Log("Attempted to Rumble");
+        foreach(DualShockGamepad controller in DualShockGamepad.all)
+        {
+            controller.SetMotorSpeeds(0.3f, 1f);
+            StartCoroutine(RumbleEnd(controller));
+        }
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
@@ -384,5 +386,11 @@ public class PlayerMovement : MonoBehaviour
         }
         gameObject.GetComponent<PlayerInput>().enabled = true;
         controlsLocked = false;
+    }
+
+    public IEnumerator RumbleEnd(DualShockGamepad controller)
+    {
+        yield return new WaitForSeconds(0.3f);
+        controller.SetMotorSpeeds(0f, 0f);
     }
 }
