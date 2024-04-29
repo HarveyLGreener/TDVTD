@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         initialHitStunLength = hitStunLength;
         initialIFramesLength = iFramesLength;
-        scoreTracker = FindObjectOfType<ScoreTracker>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -101,6 +100,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+        if (scoreTracker == null)
+        {
+            scoreTracker = GameObject.FindObjectOfType<ScoreTracker>();
+        }
         if (anim.GetCurrentAnimatorClipInfo(0)[0].clip == introAnim && !controlsLocked)
         {
             foreach (Transform child in transform)
@@ -385,11 +388,13 @@ public class PlayerMovement : MonoBehaviour
                 child.gameObject.SetActive(true);
             }
         }
+        var testing = gameObject.GetComponent<PlayerInput>();
+        Debug.Log(testing);
         gameObject.GetComponent<PlayerInput>().enabled = true;
         var gamepads = Gamepad.all;
         InputDevice gamepad = gamepads[controllerNum];
+        Debug.Log(gamepad);
         this.GetComponent<PlayerInput>().SwitchCurrentControlScheme(gamepad);
-        Debug.Log(Gamepad.all[controllerNum]);
         controlsLocked = false;
     }
 

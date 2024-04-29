@@ -19,7 +19,7 @@ public class ScoreTracker : MonoBehaviour
     public void PhantomPoint()
     {
         player1Score += 1;
-        player1.text ="" + player1Score;
+        player1.text = "" + player1Score;
         rattles.GetComponent<PlayerInput>().SwitchCurrentActionMap("Stage Select");
         if (player1Score >= firstTo)
         {
@@ -28,6 +28,7 @@ public class ScoreTracker : MonoBehaviour
             player2Score = 0;
             StartCoroutine(ResetScoreBoard());
         }
+        rattles = null;
     }
 
     public void RattlesPoint()
@@ -42,6 +43,7 @@ public class ScoreTracker : MonoBehaviour
             player2Score = 0;
             StartCoroutine(ResetScoreBoard());
         }
+        rattles = null;
     }
 
     private void Start()
@@ -59,13 +61,7 @@ public class ScoreTracker : MonoBehaviour
 
     private void Update()
     {
-        if (rattles == null)
-        {
-            rattles = FindObjectOfType<Rattles>().gameObject;
-        }
-        if (phantom == null)
-        {
-            phantom = FindObjectOfType<Phantom>().gameObject;
-        }
+        rattles = FindObjectOfType<Rattles>().gameObject;
+        phantom = FindObjectOfType<Phantom>().gameObject;
     }
 }

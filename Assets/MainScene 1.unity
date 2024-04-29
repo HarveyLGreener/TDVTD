@@ -901,6 +901,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1388413820851796740, guid: fdcae15aab4209e479f13976016b2cde,
         type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388413820851796740, guid: fdcae15aab4209e479f13976016b2cde,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[7].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 658310866}
@@ -1028,6 +1033,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StuffInEveryScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886152453278716243, guid: fdcae15aab4209e479f13976016b2cde,
+        type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8886152453278716243, guid: fdcae15aab4209e479f13976016b2cde,
         type: 3}
