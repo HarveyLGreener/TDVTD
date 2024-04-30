@@ -328,7 +328,7 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach(DualShockGamepad controller in DualShockGamepad.all)
         {
-            controller.SetMotorSpeeds(0.3f, 1f);
+            Gamepad.all[controllerNum].SetMotorSpeeds(0.3f, 1f);
             StartCoroutine(RumbleEnd(controller));
         }
         iFrames = true;

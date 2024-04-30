@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Gun : Weapon
 {
@@ -18,6 +19,8 @@ public class Gun : Weapon
     {
         if (canAttack)
         {
+            Gamepad.current.SetMotorSpeeds(0.1f, 0.3f);
+            StartCoroutine(RumbleEnd(0.05f));
             anim.Play("Fire", -1, 0f);
             canAttack = false;
             isAttacking = true;

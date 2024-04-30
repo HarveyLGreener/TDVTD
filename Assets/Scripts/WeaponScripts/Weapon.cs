@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Weapon : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class Weapon : MonoBehaviour
     {
         if (!isAttacking)
         {
+            Gamepad.current.SetMotorSpeeds(0.1f, 0.3f);
+            StartCoroutine(RumbleEnd(0.05f));
             isAttacking = true;
             this.GetComponent<Collider2D>().enabled = true;
             anim.SetTrigger("Attack");
@@ -83,5 +86,11 @@ public class Weapon : MonoBehaviour
         parent.GetComponent<PlayerMovement>().enabled = true;
         parent.GetComponent<GeneralWeapon>().enabled = true;
         Debug.Log("Made it to end");
+    }
+
+    protected IEnumerator RumbleEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Gamepad.current.SetMotorSpeeds(0f, 0f);
     }
 }
