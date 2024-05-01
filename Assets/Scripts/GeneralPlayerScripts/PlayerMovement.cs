@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject stageSelect;
     public int controllerNum;
     InputDevice gamepad;
+    public bool stageSelectionHappening = false;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -193,8 +194,13 @@ public class PlayerMovement : MonoBehaviour
                 changeCollider();
             }
         }
-        if (hp <= 0)
+        if (hp <= 0 && !stageSelectionHappening)
         {
+            PlayerMovement[] players = FindObjectsOfType<PlayerMovement>();
+            foreach (PlayerMovement player in players)
+            {
+                stageSelectionHappening = true;
+            }
             if (this.gameObject.GetComponent<Rattles>() != null)
             {
                 scoreTracker.PhantomPoint();
