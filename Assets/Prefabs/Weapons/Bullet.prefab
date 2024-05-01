@@ -89,7 +89,7 @@ MonoBehaviour:
   speed: 30
   player: {fileID: 0}
   dmg: 0
-  direction: 0
+  direction: 1
   destroy: 1
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}

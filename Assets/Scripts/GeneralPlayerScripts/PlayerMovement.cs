@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     public bool attacked = false;
     public bool flashComplete = false;
     public bool waitingForFlash = false;
-    public bool controlsLocked = false;
     public Animator anim;
     public Animator camAnim;
     public int currentAnim = 0;
@@ -53,8 +52,11 @@ public class PlayerMovement : MonoBehaviour
     public ScoreTracker scoreTracker;
     public GameObject hitParticle;
     public PlayerInput playerInput;
-    [SerializeField] private AnimationClip introAnim;
-
+    private bool controlsLocked = false;
+    public AnimationClip introAnim;
+    public GameObject phantomSmokeScreen;
+    public GameObject stageSelect;
+    public int controllerNum;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -62,8 +64,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         initialHitStunLength = hitStunLength;
         initialIFramesLength = iFramesLength;
-        scoreTracker = FindObjectOfType<ScoreTracker>();
-
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -100,12 +100,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        if(anim.GetCurrentAnimatorClipInfo(0)[0].clip == introAnim && !controlsLocked)
+        if (scoreTracker == null)
         {
+            scoreTracker = GameObject.FindObjectOfType<ScoreTracker>();
+        }
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip == introAnim && !controlsLocked)
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
             gameObject.GetComponent<PlayerInput>().enabled = false;
             StartCoroutine(WaitForIntroAnim());
         }
-
         if (iFrames)
         {
             if (!waitingForFlash && !flashComplete)
@@ -190,17 +197,26 @@ public class PlayerMovement : MonoBehaviour
             if (this.gameObject.GetComponent<Rattles>() != null)
             {
                 scoreTracker.PhantomPoint();
+                //this.gameObject.GetComponent<PlayerInput>().enabled = false;
             }
             else
             {
                 scoreTracker.RattlesPoint();
+                //this.gameObject.GetComponent<PlayerInput>().enabled = false;
+            }
+            if (scoreTracker.player1Score >= scoreTracker.firstTo || scoreTracker.player2Score >= scoreTracker.firstTo)
+            {
+
+            }
+            else
+            {
+                stageSelect.SetActive(true);
             }
             anim.Play("Dead");
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(false);
             }
-            winText.active = true;
             this.enabled = false;
         }
         if (parry && parriesUsed < 1 && !isParrying)
@@ -230,6 +246,13 @@ public class PlayerMovement : MonoBehaviour
         {
             flashComplete = false;
         }
+    }
+    private void LateUpdate()
+    {
+        jump = false;
+        dashed = false;
+        activeAbility = false;
+        parry = false;
     }
     IEnumerator Dash()
     {
@@ -303,18 +326,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
+        foreach(DualShockGamepad controller in DualShockGamepad.all)
+        {
+            Gamepad.all[controllerNum].SetMotorSpeeds(0.3f, 1f);
+            StartCoroutine(RumbleEnd(controller));
+        }
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
         camAnim.SetTrigger("DamageTaken");
-    }
-
-    public IEnumerator WaitForIntroAnim()
-    {
-        controlsLocked = true;
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-        gameObject.GetComponent<PlayerInput>().enabled = true;
-        controlsLocked = false;
     }
 
     public IEnumerator WaitForFlash()
@@ -362,5 +382,32 @@ public class PlayerMovement : MonoBehaviour
         {
             //controller.SetMotorSpeeds(0f, 0f);
         }
+    }
+
+    public IEnumerator WaitForIntroAnim()
+    {
+        controlsLocked = true;
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        foreach (Transform child in transform)
+        {
+            if (child != phantomSmokeScreen.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+        var testing = gameObject.GetComponent<PlayerInput>();
+        Debug.Log(testing);
+        gameObject.GetComponent<PlayerInput>().enabled = true;
+        var gamepads = Gamepad.all;
+        InputDevice gamepad = gamepads[controllerNum];
+        Debug.Log(gamepad);
+        this.GetComponent<PlayerInput>().SwitchCurrentControlScheme(gamepad);
+        controlsLocked = false;
+    }
+
+    public IEnumerator RumbleEnd(DualShockGamepad controller)
+    {
+        yield return new WaitForSeconds(0.3f);
+        controller.SetMotorSpeeds(0f, 0f);
     }
 }

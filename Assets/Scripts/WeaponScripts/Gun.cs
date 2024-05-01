@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Gun : Weapon
 {
@@ -18,12 +19,14 @@ public class Gun : Weapon
     {
         if (canAttack)
         {
+            Gamepad.current.SetMotorSpeeds(0.1f, 0.3f);
+            StartCoroutine(RumbleEnd(0.05f));
             anim.Play("Fire", -1, 0f);
             canAttack = false;
             isAttacking = true;
             Quaternion rotation = this.transform.rotation;
-            GameObject bullet = Instantiate(projectile, new Vector3((this.transform.position.x)+(1* this.transform.localScale.x), this.transform.position.y, this.transform.position.z), rotation);
-            bullet.GetComponent<Bullet>().direction = this.transform.localScale.x;
+            GameObject bullet = Instantiate(projectile, new Vector3((this.transform.position.x), this.transform.position.y, this.transform.position.z), rotation);
+            bullet.GetComponent<Bullet>().direction = this.transform.lossyScale.x;
             bullet.GetComponent<Bullet>().player = this.GetComponentInParent<PlayerMovement>().gameObject;
             bullet.GetComponent<Bullet>().dmg = dmg;
 

@@ -7,12 +7,13 @@ public class Bullet : MonoBehaviour
     public float speed;
     public GameObject player;
     public int dmg;
-    public float direction;
+    public float direction = 1f;
     public bool destroy = true;
     public GameObject hitParticle;
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.localScale = new Vector3(direction, this.transform.localScale.y, this.transform.localScale.z);
         StartCoroutine(DestroyBullet());
     }
 
