@@ -10,12 +10,15 @@ public class Phantom : MonoBehaviour
     [SerializeField] private float smokeScreenLength = 0f;
     public PlayerMovement phantom;
     public SpriteRenderer activeRender;
+    public AudioSource audioSource;
+    public AudioClip active;
 
     // Update is called once per frame
     void Update()
     {
         if(!activeCountdown && phantom.activeAbility)
         {
+            audioSource.PlayOneShot(active);
             Gamepad controller = Gamepad.current;
             controller.SetMotorSpeeds(0.3f, 1f);
             StartCoroutine(RumbleEnd(controller, 0.3f));

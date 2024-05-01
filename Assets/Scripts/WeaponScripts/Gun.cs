@@ -19,6 +19,8 @@ public class Gun : Weapon
     {
         if (canAttack)
         {
+            audioSource.PlayOneShot(attackFX);
+            Gamepad.current.SetMotorSpeeds(0.1f, 0.3f);
             Gamepad.current.SetMotorSpeeds(0.1f, 0.3f);
             StartCoroutine(RumbleEnd(Gamepad.current, 0.05f,true));
             anim.Play("Fire", -1, 0f);

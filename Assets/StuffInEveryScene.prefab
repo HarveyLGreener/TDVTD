@@ -191,6 +191,9 @@ MonoBehaviour:
   hitParticle: {fileID: 4799985097931445657, guid: 1e7b11853edd1e84894eae4750319394,
     type: 3}
   particleSpawnPoint: {fileID: 1388413821193600591}
+  rumbleChanged: 0
+  audioSource: {fileID: 1844330761}
+  attackFX: {fileID: 8300000, guid: 90b040425d58b004fb5117f6fd4a41e1, type: 3}
 --- !u!95 &1388413820712400423
 Animator:
   serializedVersion: 5
@@ -245,7 +248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388413820851796859}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.63, y: 1.91, z: -0.018826926}
+  m_LocalPosition: {x: 2.29, y: -4.33, z: -0.018826926}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -536,7 +539,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a9bb7d36-46bf-4364-b541-a6a359efe08b
     m_ActionName: Stage Select/Selected[/DualSenseGamepadHID/buttonSouth,/DualSenseGamepadHID1/buttonSouth]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -600,6 +603,16 @@ MonoBehaviour:
   introAnim: {fileID: 7400000, guid: 83d943ea82d95bf42bba2afe2a6038cf, type: 2}
   phantomSmokeScreen: {fileID: 1388413822708280160}
   stageSelect: {fileID: 0}
+  controllerNum: 0
+  stageSelectionHappening: 0
+  dashFX: {fileID: 8300000, guid: bbc417cb6bfb67c4fb139915c4effdd3, type: 3}
+  jumpFX: {fileID: 8300000, guid: 9e2cf8b917a670d428b28a7df56d663c, type: 3}
+  attackFX: {fileID: 0}
+  gotHitFX: {fileID: 8300000, guid: 4a2f0ac6835e47d49afce1a5829dde74, type: 3}
+  deathFX: {fileID: 8300000, guid: b6f7de5dac319e248a05db6680af6958, type: 3}
+  parryFX: {fileID: 0}
+  parryHitFX: {fileID: 0}
+  audioSource: {fileID: 1844330761}
   crownThrowDist: {x: 5, y: 0, z: 0}
   crown: {fileID: 2635552898876522181, guid: f707978d2b466a24f856604f67aa15b0, type: 3}
   crownToThr: {fileID: 0}
@@ -737,7 +750,6 @@ MonoBehaviour:
   playerDirection: {x: 0, y: 0}
   playerInitialDirection: 0
   playerNewDirection: 0
-  attackDirection: {x: 0, y: 0}
   cooldown: 0
 --- !u!1 &1388413820899142582
 GameObject:
@@ -2137,6 +2149,9 @@ MonoBehaviour:
   anim: {fileID: 1388413822195588882}
   hitParticle: {fileID: 0}
   particleSpawnPoint: {fileID: 0}
+  rumbleChanged: 0
+  audioSource: {fileID: 1844330761}
+  attackFX: {fileID: 8300000, guid: 56f889a7f74efe145b4e87433a83d940, type: 3}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
@@ -2980,6 +2995,9 @@ MonoBehaviour:
   anim: {fileID: 4024727361164134190}
   hitParticle: {fileID: 0}
   particleSpawnPoint: {fileID: 0}
+  rumbleChanged: 0
+  audioSource: {fileID: 1844330761}
+  attackFX: {fileID: 8300000, guid: 56f889a7f74efe145b4e87433a83d940, type: 3}
   projectile: {fileID: 8934341570175903516, guid: 3a6b8b015ea92f645a392d0ec8ff35c5,
     type: 3}
   direction: 0
@@ -3099,6 +3117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3385529311989231308}
+  - component: {fileID: 1844330761}
   m_Layer: 0
   m_Name: StuffInEveryScene
   m_TagString: Untagged
@@ -3136,6 +3155,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1844330761
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7818230287192736721}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8203228684947485374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3172,7 +3287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8203228684947485374}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.52, y: 2.16, z: -0.018826926}
+  m_LocalPosition: {x: -9.74, y: -4.22, z: -0.018826926}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3490,7 +3605,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a9bb7d36-46bf-4364-b541-a6a359efe08b
     m_ActionName: Stage Select/Selected[/XInputControllerWindows/buttonSouth,/DualSenseGamepadHID/buttonSouth]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
@@ -3516,7 +3631,6 @@ MonoBehaviour:
   playerDirection: {x: 0, y: 0}
   playerInitialDirection: 0
   playerNewDirection: 0
-  attackDirection: {x: 0, y: 0}
   cooldown: 0
 --- !u!114 &8886152453278716255
 MonoBehaviour:
@@ -3535,6 +3649,8 @@ MonoBehaviour:
   smokeScreenLength: 0.75
   phantom: {fileID: 3331078782982193572}
   activeRender: {fileID: 1388413822656914384}
+  audioSource: {fileID: 1844330761}
+  active: {fileID: 8300000, guid: 7dde5c48bf318ad46982177ab07ac94c, type: 3}
 --- !u!114 &3331078782982193572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3572,7 +3688,7 @@ MonoBehaviour:
   iFrames: 0
   playerDashSprite: {fileID: 1388413821315669208}
   playerParry: {fileID: 1388413821281816258}
-  passive: {fileID: 0}
+  passive: {fileID: 1388413822656914384}
   active: {fileID: 0}
   winText: {fileID: 1388413821708911186}
   parry: 0
@@ -3595,6 +3711,16 @@ MonoBehaviour:
   introAnim: {fileID: 7400000, guid: d6b2d1712a80fe94b87d4fef82f15b6e, type: 2}
   phantomSmokeScreen: {fileID: 1388413822708280160}
   stageSelect: {fileID: 0}
+  controllerNum: 1
+  stageSelectionHappening: 0
+  dashFX: {fileID: 8300000, guid: bbc417cb6bfb67c4fb139915c4effdd3, type: 3}
+  jumpFX: {fileID: 8300000, guid: 9e2cf8b917a670d428b28a7df56d663c, type: 3}
+  attackFX: {fileID: 8300000, guid: 56f889a7f74efe145b4e87433a83d940, type: 3}
+  gotHitFX: {fileID: 8300000, guid: 4a2f0ac6835e47d49afce1a5829dde74, type: 3}
+  deathFX: {fileID: 8300000, guid: 1161f162a7c54114986fa2b3a86beefa, type: 3}
+  parryFX: {fileID: 0}
+  parryHitFX: {fileID: 0}
+  audioSource: {fileID: 1844330761}
 --- !u!114 &5194344683600817464
 MonoBehaviour:
   m_ObjectHideFlags: 0

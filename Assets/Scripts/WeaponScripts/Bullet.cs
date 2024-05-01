@@ -70,7 +70,7 @@ public class Bullet : MonoBehaviour
 
     public IEnumerator DestroyBullet()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f);
         yield return new WaitUntil(() => (this.gameObject.GetComponent<Bullet>().destroy));
         Destroy(this.gameObject);
     }

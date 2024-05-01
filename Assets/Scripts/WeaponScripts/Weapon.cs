@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour
     public GameObject hitParticle;
     public Transform particleSpawnPoint;
     public bool rumbleChanged = false;
+    public AudioSource audioSource;
+    public AudioClip attackFX;
 
     protected virtual void OnEnable()
     {
@@ -23,6 +25,7 @@ public class Weapon : MonoBehaviour
 
     public virtual IEnumerator Attack()
     {
+        audioSource.PlayOneShot(attackFX);
         Gamepad.current.SetMotorSpeeds(0.1f, 0.3f);
         StartCoroutine(RumbleEnd(Gamepad.current, 0.05f,false));
         if (!isAttacking)

@@ -60,6 +60,16 @@ public class PlayerMovement : MonoBehaviour
     InputDevice gamepad;
     public bool stageSelectionHappening = false;
 
+    [Header("Sound FXs")]
+    public AudioClip dashFX;
+    public AudioClip jumpFX;
+    public AudioClip attackFX;
+    public AudioClip gotHitFX;
+    public AudioClip deathFX;
+    public AudioClip parryFX;
+    public AudioClip parryHitFX;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -177,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (rb.velocity.y == 0 && jump && canJump == true)
             {
+                audioSource.PlayOneShot(jumpFX);
                 rb.AddForce(transform.up * JumpSpeed, ForceMode2D.Impulse);
             }
             if (rb.velocity.y < -20f)
@@ -196,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (hp <= 0 && !stageSelectionHappening)
         {
+            audioSource.PlayOneShot(deathFX);
             PlayerMovement[] players = FindObjectsOfType<PlayerMovement>();
             foreach (PlayerMovement player in players)
             {
@@ -263,6 +275,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator Dash()
     {
+        audioSource.PlayOneShot(dashFX);
         dashOnCooldown = true;
         playerDashSprite.color = Color.grey;
         float inputX = inputMovement.x;
@@ -333,6 +346,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
+        audioSource.PlayOneShot(gotHitFX);
         Gamepad controller = Gamepad.all[controllerNum];
         controller.SetMotorSpeeds(0.3f, 1f);
         StartCoroutine(RumbleEnd(controller, 0.3f));
