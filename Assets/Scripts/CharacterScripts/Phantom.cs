@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Phantom : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Phantom : MonoBehaviour
     {
         if(!activeCountdown && phantom.activeAbility)
         {
+            Gamepad controller = Gamepad.current;
+            controller.SetMotorSpeeds(0.3f, 1f);
+            StartCoroutine(RumbleEnd(controller, 0.3f));
             activeRender.color = Color.grey;
             CircleCollider2D colliderOfWeapon = smokeScreen.AddComponent<CircleCollider2D>();
             colliderOfWeapon.radius = 1f;
@@ -38,5 +42,11 @@ public class Phantom : MonoBehaviour
         smokeScreen.GetComponent<SmokeScreen>().SetHit(false);
         smokeScreen.GetComponent<SmokeScreen>().SetShovingOpp(false);
         activeCountdown = false;
+    }
+
+    public IEnumerator RumbleEnd(Gamepad controller, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        controller.SetMotorSpeeds(0f, 0f);
     }
 }

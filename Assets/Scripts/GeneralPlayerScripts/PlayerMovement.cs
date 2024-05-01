@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject phantomSmokeScreen;
     public GameObject stageSelect;
     public int controllerNum;
+    InputDevice gamepad;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -326,11 +327,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
-/*        foreach(DualShockGamepad controller in DualShockGamepad.all)
-        {
-            Gamepad.all[controllerNum].SetMotorSpeeds(0.3f, 1f);
-            StartCoroutine(RumbleEnd(controller));
-        }*/
+        Gamepad controller = Gamepad.all[controllerNum];
+        controller.SetMotorSpeeds(0.3f, 1f);
+        StartCoroutine(RumbleEnd(controller, 0.3f));
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);
@@ -399,15 +398,15 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(testing);
         gameObject.GetComponent<PlayerInput>().enabled = true;
         var gamepads = Gamepad.all;
-        InputDevice gamepad = gamepads[controllerNum];
+        gamepad = gamepads[controllerNum];
         Debug.Log(gamepad);
         this.GetComponent<PlayerInput>().SwitchCurrentControlScheme(gamepad);
         controlsLocked = false;
     }
 
-    public IEnumerator RumbleEnd(DualShockGamepad controller)
+    public IEnumerator RumbleEnd(Gamepad controller, float waitTime)
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(waitTime);
         controller.SetMotorSpeeds(0f, 0f);
     }
 }

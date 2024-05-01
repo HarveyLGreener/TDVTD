@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Rattles : PlayerMovement
 {
@@ -27,6 +28,9 @@ public class Rattles : PlayerMovement
         direction = transform.localScale.x;
         if (holdingBoomerang && activeAbility)
         {
+            Gamepad controller = Gamepad.all[controllerNum];
+            controller.SetMotorSpeeds(0.3f, 1f);
+            StartCoroutine(RumbleEnd(controller, 0.3f));
             active.color = Color.grey;
             crownToThr = Instantiate(crown, transform.position, Quaternion.identity);
             crownToThr.setRattles(this);

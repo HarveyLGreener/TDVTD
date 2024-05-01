@@ -20,7 +20,7 @@ public class Gun : Weapon
         if (canAttack)
         {
             Gamepad.current.SetMotorSpeeds(0.1f, 0.3f);
-            StartCoroutine(RumbleEnd(0.05f));
+            StartCoroutine(RumbleEnd(Gamepad.current, 0.05f,true));
             anim.Play("Fire", -1, 0f);
             canAttack = false;
             isAttacking = true;
