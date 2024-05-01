@@ -326,11 +326,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Damaged()
     {
-        foreach(DualShockGamepad controller in DualShockGamepad.all)
+/*        foreach(DualShockGamepad controller in DualShockGamepad.all)
         {
             Gamepad.all[controllerNum].SetMotorSpeeds(0.3f, 1f);
             StartCoroutine(RumbleEnd(controller));
-        }
+        }*/
         iFrames = true;
         hit = true;
         anim.Play("Hit", 0);

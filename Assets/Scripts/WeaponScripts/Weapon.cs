@@ -49,11 +49,15 @@ public class Weapon : MonoBehaviour
                 GameObject particle = Instantiate(hitParticle);
                 particle.transform.position = particleSpawnPoint.position;
                 Destroy(particle, 0.33f);
+
             }
             else if (collision.gameObject.GetComponent<PlayerMovement>().isParrying)
             {
                 Debug.Log("Parried!");
-                StartCoroutine(parryStunned()); GameObject particle = Instantiate(hitParticle);
+                StartCoroutine(parryStunned()); 
+                GameObject particle = Instantiate(hitParticle);
+                particle.transform.position = particleSpawnPoint.position;
+                Destroy(particle, 0.33f);
             }
         }
     }
