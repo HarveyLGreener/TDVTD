@@ -514,11 +514,6 @@ PrefabInstance:
       propertyPath: rattles
       value: 
       objectReference: {fileID: 261780510}
-    - target: {fileID: 3410837561693603695, guid: 0c6b773e4fae99a47bf3ada011fade90,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c6b773e4fae99a47bf3ada011fade90, type: 3}
 --- !u!1 &261780510 stripped
