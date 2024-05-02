@@ -9,6 +9,7 @@ TagManager:
   - Gun
   - CrownDestroy
   - StageSelect
+  - CrownAudio
   layers:
   - Default
   - TransparentFX

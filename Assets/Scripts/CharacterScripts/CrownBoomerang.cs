@@ -19,9 +19,13 @@ public class CrownBoomerang : Weapon
     [SerializeField] private Rattles rattles;
     private bool timerActive = false;
     [SerializeField] private float lifespan = 5.0f;
+    public AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GameObject.FindGameObjectWithTag("CrownAudio").GetComponent<AudioSource>();
+
+        audioSource.Play();
         //spriteTransform = transform.GetChild(0);
         Rattles = GameObject.FindObjectOfType<Rattles>().gameObject;
     }
@@ -86,6 +90,7 @@ public class CrownBoomerang : Weapon
             }
             else if (col.gameObject.tag == "CrownDestroy")
             {
+                audioSource.Stop();
                 Destroy(gameObject);
             }
         }
@@ -114,6 +119,7 @@ public class CrownBoomerang : Weapon
             }
             else
             {
+                audioSource.Stop(); 
                 //rattles.holdingBoomerang = true;
                 Destroy(this.gameObject);
             }
@@ -133,6 +139,7 @@ public class CrownBoomerang : Weapon
     {
         timerActive = true;
         yield return new WaitForSeconds(lifespan);
+        audioSource.Stop();
         Destroy(gameObject);
     }
 }
