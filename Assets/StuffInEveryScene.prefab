@@ -610,7 +610,7 @@ MonoBehaviour:
   attackFX: {fileID: 0}
   gotHitFX: {fileID: 8300000, guid: 4a2f0ac6835e47d49afce1a5829dde74, type: 3}
   deathFX: {fileID: 8300000, guid: b6f7de5dac319e248a05db6680af6958, type: 3}
-  parryFX: {fileID: 0}
+  parryFX: {fileID: 8300000, guid: 48ab0f11f6494dc44a0d174926064d1b, type: 3}
   parryHitFX: {fileID: 0}
   audioSource: {fileID: 1844330761}
   crownThrowDist: {x: 5, y: 0, z: 0}
@@ -3718,7 +3718,7 @@ MonoBehaviour:
   attackFX: {fileID: 8300000, guid: 56f889a7f74efe145b4e87433a83d940, type: 3}
   gotHitFX: {fileID: 8300000, guid: 4a2f0ac6835e47d49afce1a5829dde74, type: 3}
   deathFX: {fileID: 8300000, guid: 1161f162a7c54114986fa2b3a86beefa, type: 3}
-  parryFX: {fileID: 0}
+  parryFX: {fileID: 8300000, guid: 48ab0f11f6494dc44a0d174926064d1b, type: 3}
   parryHitFX: {fileID: 0}
   audioSource: {fileID: 1844330761}
 --- !u!114 &5194344683600817464

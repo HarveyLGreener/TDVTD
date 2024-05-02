@@ -51,7 +51,7 @@ public class ScoreTracker : MonoBehaviour
     IEnumerator ResetScoreBoard(string player)
     {
         winText.active = true;
-        winner.text = player + " wins!";
+        winner.text = player + " Wins!";
         yield return new WaitForSeconds(10f);
         player1Score = 0;
         player2Score = 0;
