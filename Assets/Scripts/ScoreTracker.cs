@@ -48,7 +48,7 @@ public class ScoreTracker : MonoBehaviour
         player2.text = "" + player2Score;
     }
 
-    IEnumerator ResetScoreBoard(string player)
+    public IEnumerator ResetScoreBoard(string player)
     {
         winText.active = true;
         winner.text = player + " Wins!";
