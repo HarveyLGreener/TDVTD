@@ -19,7 +19,6 @@ public class CrownBoomerang : Weapon
     [SerializeField] private Rattles rattles;
     private bool timerActive = false;
     [SerializeField] private float lifespan = 5.0f;
-    public AudioSource audioSource;
 
     private void Start()
     {
